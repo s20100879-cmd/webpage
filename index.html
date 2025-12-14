@@ -22,12 +22,17 @@
       width:100%; max-width:960px; backdrop-filter: blur(6px);
     }
     header{
-      display:flex; gap:20px; align-items:center; margin-bottom:20px;
+      display:flex; gap:20px; align-items:center; margin-bottom:16px;
     }
+    /* 아바타: 96x96 정사각, 이미지 전체 보이도록 contain */
     .avatar{
-      width:96px; height:96px; border-radius:14px; background:linear-gradient(135deg,var(--accent),#4c1d95);
-      display:flex; align-items:center; justify-content:center; font-weight:700; font-size:28px; color:white;
+      width:96px;
+      height:96px;
+      border-radius:16px;
       box-shadow: 0 6px 18px rgba(12,18,30,0.6);
+      object-fit:contain;
+      background:#020617;
+      padding:6px; /* 흰 배경 여백 확보해서 머리 안 잘림 */
     }
     h1{margin:0; font-size:24px}
     p.lead{margin:6px 0 0; color:var(--muted); font-size:14px}
@@ -36,7 +41,10 @@
       border:1px solid rgba(255,255,255,0.04); padding:20px; border-radius:12px; box-shadow: 0 8px 30px rgba(2,6,23,0.6);
     }
     .grid{display:grid; grid-template-columns:1.6fr 1fr; gap:18px;}
-    @media (max-width:840px){ .grid{grid-template-columns:1fr} .avatar{width:72px;height:72px} }
+    @media (max-width:840px){
+      .grid{grid-template-columns:1fr}
+      .avatar{width:72px;height:72px}
+    }
     section{margin-bottom:16px}
     h2{font-size:15px; margin:0 0 8px}
     .skills{display:flex; flex-wrap:wrap; gap:8px}
@@ -59,16 +67,55 @@
     .tagline{font-size:13px; color:var(--muted); margin-top:4px;}
     .two-col{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; font-size:13px;}
     @media (max-width:600px){ .two-col{grid-template-columns:1fr} }
+
+    /* 탭 스타일 */
+    .tabs{
+      margin-bottom:18px;
+    }
+    .tab-buttons{
+      display:flex;
+      gap:8px;
+      margin-bottom:10px;
+      border-bottom:1px solid rgba(148,163,184,0.24);
+    }
+    .tab-button{
+      padding:6px 10px;
+      font-size:13px;
+      border:none;
+      background:transparent;
+      color:var(--muted);
+      cursor:pointer;
+      border-radius:8px 8px 0 0;
+    }
+    .tab-button.active{
+      color:var(--text);
+      background:rgba(15,23,42,0.8);
+      border:1px solid rgba(148,163,184,0.4);
+      border-bottom-color:transparent;
+    }
+    .tab-panel{
+      display:none;
+      font-size:13px;
+      line-height:1.6;
+      padding-top:4px;
+    }
+    .tab-panel.active{
+      display:block;
+    }
   </style>
 </head>
 <body>
 <main class="container">
   <header>
-    <div class="avatar">HJ</div>
+    <img
+      class="avatar"
+      src="https://raw.githubusercontent.com/s20100879-cmd/webpage/refs/heads/main/20251214_212950370.jpg"
+      alt="이현재 프로필 사진"
+    />
     <div>
       <h1>이현재 — 물류·배송 웹서비스 기획자</h1>
       <p class="lead">
-        커머스 물류·배송 도메인 특화 웹서비스 기획 · Admin/백오피스 · API/연동 · 자동화 물류센터·라스트마일 배송 전략
+        커머스 물류·배송 도메인 특화 웹서비스 기획 · Admin/백오피스 · API/연동 · 자동화 물류센터·라스트마일 배송
       </p>
       <p class="tagline" id="career-line">
         <!-- JS에서 동적 계산 -->
@@ -76,213 +123,229 @@
     </div>
   </header>
 
-  <div class="grid">
-    <!-- 좌측 메인 -->
-    <div class="card">
-<section>
-  <h2>소개</h2>
-  <p style="font-size:13px; line-height:1.6; margin-bottom:6px;">
-    이커머스/물류 현장 경험을 바탕으로, 주문·배송·정산 전 과정을 설계해 온 물류·배송 서비스 기획자입니다.
-    해외 C2C 플랫폼(Qoo10)부터 국내 커머스(SSG.COM)까지, 라스트마일 제휴·배송 추적·자동화 물류센터·백오피스 Admin까지
-    전주기를 직접 기획·운영해 왔습니다.
-  </p>
-  <p style="font-size:13px; line-height:1.6; margin-top:8px;">
-    언론 소개:
-    <a href="https://www.hankyung.com/article/202405136943i" target="_blank" rel="noopener" style="color:#a5b4fc; text-decoration:none;">
-    이마트몰 피킹 내비게이션
-    </a>
-    ·
-    <a href="https://www.businesspost.co.kr/BP?command=article_view&num=346816" target="_blank" rel="noopener" style="color:#a5b4fc; text-decoration:none;">
-      심야배송
-    </a>
-    관련 기사
-  </p>
-  <p style="font-size:13px; line-height:1.6; margin-top:4px;">
-    유튜브:
-    <a href="https://www.youtube.com/watch?v=4tbxUU3KVWM" target="_blank" rel="noopener" style="color:#a5b4fc; text-decoration:none;">
-      SSG NEO4센터 소개 (신세계그룹 공식 유튜브 채널)
-    </a>
-    영상에서 보여지는 자동화 물류센터의 피킹·패킹·출하 및 재고의 백오피스 시스템을 직접 기획·운영자 교육을 진행한 경험을 보유하고 있습니다.
-  </p>
-</section>
-
-
-      <section>
-        <h2>주요 성과</h2>
-        <div class="experience">
-          <div class="exp-item">
-            <div class="exp-header">
-              <div class="exp-title">QXPRESS 원격 입고 API 및 운송장 자동 발급 서비스 기획</div>
-              <div class="meta">QXPRESS 플랫폼 기획실</div>
-            </div>
-            <ul class="list-tight">
-              <li>고객사(WISH 등)에서 자사 물류센터로 직접 운송장 취득·데이터 전송이 가능하도록 원격 입고 API 신규 설계</li>
-              <li>DHL·SAGAWA·CJ대한통운 등 제휴 배송사의 운송장·데이터 전송 자동화로 포털 수기 작업 시간 및 실수 감소</li>
-            </ul>
-          </div>
-
-          <div class="exp-item">
-            <div class="exp-header">
-              <div class="exp-title">월 단위 배송비 자동 집계·청구 Admin 메뉴 기획</div>
-              <div class="meta">QXPRESS Smartship</div>
-            </div>
-            <ul class="list-tight">
-              <li>국가·법인별 이용 데이터를 기준으로 배송비를 월 단위 자동 집계하고, 청구서 PDF 생성·이메일 발송까지 자동화</li>
-              <li>회계/정산 담당자의 수기 청구서 작성 업무를 제거하여, 반복 작업 및 오류를 크게 감소</li>
-            </ul>
-          </div>
-
-          <div class="exp-item">
-            <div class="exp-header">
-              <div class="exp-title">Qoo10 배송 서비스 후기·만족도 프론트 페이지 기획</div>
-              <div class="meta">Qoo10 플랫폼 기획실</div>
-            </div>
-            <ul class="list-tight">
-              <li>배송 서비스 후기·평점을 출발국·서비스 도메인·사용자 언어 기준으로 한 화면에서 조회 가능한 웹 페이지 신규 설계</li>
-              <li>서비스별 후기 비교가 쉬워져, SQM·운영팀의 품질 모니터링과 이용자 의사결정에 기여</li>
-            </ul>
-          </div>
-
-          <div class="exp-item">
-            <div class="exp-header">
-              <div class="exp-title">배송사별 배송 현황 조회 Admin 개편</div>
-              <div class="meta">Qoo10 / QXPRESS</div>
-            </div>
-            <ul class="list-tight">
-              <li>전체 주문의 배송사·평균 배송 리드타임 조회 기능을 재구성하여, SQM KPI 관리에 최적화된 Admin 화면 설계</li>
-              <li>실시간 조회 구조에서 월/일 단위 배치 집계 구조로 전환하는 개선 과제 정의 (대용량 데이터 대응)</li>
-            </ul>
-          </div>
-
-          <div class="exp-item">
-            <div class="exp-header">
-              <div class="exp-title">자동화 물류센터·배송 기사 앱·백오피스 기획</div>
-              <div class="meta">SSG.COM 물류플랫폼기획팀</div>
-            </div>
-            <ul class="list-tight">
-              <li>이마트몰 쓱배송 기사 앱 및 백오피스, 백화점 배송 백오피스 운영 개선, 자동화센터 대출입·이관·폐기·집품 기능 기획</li>
-              <li>이마트 점포 POG·집품 관련 시스템 기획이 외부 매체에 소개되며, 현장 운영 효율화 사례로 보도</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>자기소개 · 커리어 스토리</h2>
-        <p style="font-size:13px; line-height:1.6; margin-bottom:6px;">
-          첫 서비스 기획은 Qoo10 플랫폼의 배송 서비스 화면·후기 페이지에서 시작했습니다.
-          PC/모바일 웹 기반의 화면 설계뿐 아니라, 실제 배송 상태를 추적하는 Admin·API 구조까지 함께 이해하고 설계해 왔습니다.
-        </p>
-        <p style="font-size:13px; line-height:1.6; margin-bottom:6px;">
-          이후 QXPRESS 플랫폼 기획실 셋업 멤버로 합류하여 Smartship, 해외 발송 대행, 가상계좌 입금 처리,
-          배송비 청구, 월 단위 정산, 원격 입고 API, 대만 편의점(7-11·FamilyMart) 배송 등 물류 서비스 전반을 기획·운영했습니다.
-          IT Help Desk를 전담하며 MS-SQL·Python(Selenium)으로 데이터를 직접 추출·검증하고, 대량 사고를 선제적으로 대응해 왔습니다.
-        </p>
-        <p style="font-size:13px; line-height:1.6;">
-          SSG.COM에서는 이마트몰 쓱배송 기사 앱·백오피스, 자동화 물류센터, 백화점 배송/집품 등 고도화된 국내 커머스 환경에서
-          물류 서비스 기획 경험을 확장하고 있습니다.
-        </p>
-      </section>
+  <!-- 탭 영역 -->
+  <div class="card tabs">
+    <div class="tab-buttons">
+      <button class="tab-button active" data-tab="intro">소개</button>
+      <button class="tab-button" data-tab="thoughts">서비스기획으로 느낀 점</button>
     </div>
 
-    <!-- 우측 사이드 -->
-    <aside class="card">
-      <section>
-        <h2>기본 정보</h2>
-        <div class="two-col">
-          <div>
-            <div class="meta">이름</div>
-            <div style="font-size:13px;">이현재 (HyunJae Lee)</div>
-          </div>
-          <div>
-            <div class="meta">생년월일</div>
-            <div style="font-size:13px;">1991.05.10</div>
-          </div>
-          <div>
-            <div class="meta">성별</div>
-            <div style="font-size:13px;">남성</div>
-          </div>
-          <div>
-            <div class="meta">거주지</div>
-            <div style="font-size:13px;">인천광역시 부평구 </div>
-          </div>
+    <!-- 소개 탭 -->
+    <div class="tab-panel active" id="tab-intro">
+      <div class="grid">
+        <div>
+          <section>
+            <h2>소개</h2>
+            <p style="font-size:13px; line-height:1.6; margin-bottom:6px;">
+              이커머스/물류 현장 경험을 바탕으로, 주문·배송·정산 전 과정을 설계해 온 물류·배송 서비스 기획자입니다.
+              해외 C2C 플랫폼(Qoo10)부터 국내 커머스(SSG.COM)까지, 라스트마일 제휴·배송 추적·자동화 물류센터·백오피스 Admin까지
+              전주기를 직접 기획·운영해 왔습니다.
+            </p>
+            <p style="font-size:13px; line-height:1.6; margin-top:8px;">
+              언론 소개:
+              <a href="https://www.hankyung.com/article/202405136943i" target="_blank" rel="noopener" style="color:#a5b4fc; text-decoration:none;">
+                이마트몰 피킹 내비게이션
+              </a>
+              ·
+              <a href="https://www.businesspost.co.kr/BP?command=article_view&num=346816" target="_blank" rel="noopener" style="color:#a5b4fc; text-decoration:none;">
+                심야배송
+              </a>
+              관련 기사
+            </p>
+            <p style="font-size:13px; line-height:1.6; margin-top:4px;">
+              유튜브:
+              <a href="https://www.youtube.com/watch?v=4tbxUU3KVWM" target="_blank" rel="noopener" style="color:#a5b4fc; text-decoration:none;">
+                SSG NEO4센터 소개 (신세계그룹 공식 유튜브 채널)
+              </a>
+              영상에서 보여지는 자동화 물류센터의 피킹·패킹·출하 및 재고의 백오피스 시스템을 직접 기획·운영자 교육을 진행한 경험을 보유하고 있습니다.
+            </p>
+          </section>
+
+          <section>
+            <h2>주요 성과</h2>
+            <div class="experience">
+              <div class="exp-item">
+                <div class="exp-header">
+                  <div class="exp-title">QXPRESS 원격 입고 API 및 운송장 자동 발급 서비스 기획</div>
+                  <div class="meta">QXPRESS 플랫폼 기획실</div>
+                </div>
+                <ul class="list-tight">
+                  <li>고객사(WISH 등)에서 자사 물류센터로 직접 운송장 취득·데이터 전송이 가능하도록 원격 입고 API 신규 설계</li>
+                  <li>DHL·SAGAWA·CJ대한통운 등 제휴 배송사의 운송장·데이터 전송 자동화로 포털 수기 작업 시간 및 실수 감소</li>
+                </ul>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-header">
+                  <div class="exp-title">월 단위 배송비 자동 집계·청구 Admin 메뉴 기획</div>
+                  <div class="meta">QXPRESS Smartship</div>
+                </div>
+                <ul class="list-tight">
+                  <li>국가·법인별 이용 데이터를 기준으로 배송비를 월 단위 자동 집계하고, 청구서 PDF 생성·이메일 발송까지 자동화</li>
+                  <li>회계/정산 담당자의 수기 청구서 작성 업무를 제거하여, 반복 작업 및 오류를 크게 감소</li>
+                </ul>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-header">
+                  <div class="exp-title">Qoo10 배송 서비스 후기·만족도 프론트 페이지 기획</div>
+                  <div class="meta">Qoo10 플랫폼 기획실</div>
+                </div>
+                <ul class="list-tight">
+                  <li>배송 서비스 후기·평점을 출발국·서비스 도메인·사용자 언어 기준으로 한 화면에서 조회 가능한 웹 페이지 신규 설계</li>
+                  <li>서비스별 후기 비교가 쉬워져, SQM·운영팀의 품질 모니터링과 이용자 의사결정에 기여</li>
+                </ul>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-header">
+                  <div class="exp-title">배송사별 배송 현황 조회 Admin 개편</div>
+                  <div class="meta">Qoo10 / QXPRESS</div>
+                </div>
+                <ul class="list-tight">
+                  <li>전체 주문의 배송사·평균 배송 리드타임 조회 기능을 재구성하여, SQM KPI 관리에 최적화된 Admin 화면 설계</li>
+                  <li>실시간 조회 구조에서 월/일 단위 배치 집계 구조로 전환하는 개선 과제 정의 (대용량 데이터 대응)</li>
+                </ul>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-header">
+                  <div class="exp-title">자동화 물류센터·배송 기사 앱·백오피스 기획</div>
+                  <div class="meta">SSG.COM 물류플랫폼기획팀</div>
+                </div>
+                <ul class="list-tight">
+                  <li>이마트몰 쓱배송 기사 앱 및 백오피스, 백화점 배송 백오피스 운영 개선, 자동화센터 대출입·이관·폐기·집품 기능 기획</li>
+                  <li>이마트 점포 POG·집품 관련 시스템 기획이 외부 매체에 소개되며, 현장 운영 효율화 사례로 보도</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>자기소개 · 직무경험 요약</h2>
+            <p style="font-size:13px; line-height:1.6; margin-bottom:6px;">
+              첫 서비스 기획은 Qoo10 플랫폼의 배송서비스 기획에서 시작했습니다.
+              PC/모바일 웹 기반의 화면 설계뿐 아니라, 실제 배송 상태를 추적하는 Admin·API 구조까지 함께 이해하고 설계해 왔습니다.
+              그 중 C2C 배송 서비스 화면·후기 페이지는 프론트 개편시에도 늘 유지되었습니다.
+            </p>
+            <p style="font-size:13px; line-height:1.6; margin-bottom:6px;">
+              이후 관계사인 QXPRESS 플랫폼 기획실 셋업 멤버로 합류하여 Smartship, 해외 발송 대행, 가상계좌 입금 처리,
+              배송비 청구, 월 단위 정산, 원격 입고 API, 대만 편의점(7-11·FamilyMart) 배송 등 물류 서비스 전반을 기획·운영했습니다.
+              IT Help Desk를 전담하며 MS-SQL·Python(Selenium)으로 데이터를 직접 추출·검증하고, 대량 사고를 선제적으로 대응해 왔습니다.
+            </p>
+            <p style="font-size:13px; line-height:1.6;">
+              SSG.COM에서는 이마트몰 쓱배송 기사 앱·백오피스, 자동화 물류센터, 백화점 배송/집품 등 고도화된 국내 커머스 환경에서
+              물류 서비스 기획 경험을 확장하고 있습니다.
+            </p>
+          </section>
         </div>
-      </section>
 
-      <section>
-        <h2>연락처</h2>
-        <p class="contact">
-          이메일: <a href="mailto:october1129@naver.com">october1129@naver.com</a><br/>
-          
-        </p>
-      </section>
+        <aside>
+          <section>
+            <h2>기본 정보</h2>
+            <div class="two-col">
+              <div>
+                <div class="meta">이름</div>
+                <div style="font-size:13px;">이현재 (HyunJae Lee)</div>
+              </div>
+              <div>
+                <div class="meta">생년월일</div>
+                <div style="font-size:13px;">1991.05</div>
+              </div>
+              <div>
+                <div class="meta">성별</div>
+                <div style="font-size:13px;">남성</div>
+              </div>
+              <div>
+                <div class="meta">거주지</div>
+                <div style="font-size:13px;">인천광역시 부평구 </div>
+              </div>
+            </div>
+          </section>
 
-      <section>
-        <h2>학력</h2>
-        <p class="meta">
-          2010.03 – 2017.08<br/>
-          숭실대학교 행정·경제학과 복수전공 학사, 서울<br/><br/>        
-          
-        </p>
-      </section>
+          <section>
+            <h2>연락처</h2>
+            <p class="contact">
+              이메일: <a href="mailto:october1129@naver.com">october1129@naver.com</a><br/>
+            </p>
+          </section>
 
-      <section>
-        <h2>경력 요약</h2>
-        <div class="experience">
-          <div class="exp-item">
-            <div class="exp-title">SSG.COM</div>
-            <div class="meta">물류플랫폼기획팀 · 플랫폼기획담당 팀원<br/>2022.06 – 재직 중</div>
-          </div>
-          <div class="exp-item">
-            <div class="exp-title">(주)큐익스프레스</div>
-            <div class="meta">플랫폼기획실 · 대리<br/>2022.01 – 2022.05 (5개월)</div>
-          </div>
-          <div class="exp-item">
-            <div class="exp-title">지오시스(유)</div>
-            <div class="meta">Qx Dev Division · 사원<br/>2018.12 – 2021.12 (3년)</div>
-          </div>
-        </div>
-      </section>
+          <section>
+            <h2>학력</h2>
+            <p class="meta">
+              2010.03 – 2017.08<br/>
+              숭실대학교 행정·경제학과 복수전공 학사, 서울<br/><br/>
+            </p>
+          </section>
 
-      <section>
-        <h2>스킬</h2>
-        <div class="skills">
-          <span class="chip">배송·물류 서비스 기획</span>
-          <span class="chip">웹/앱 화면 설계</span>
-          <span class="chip">Admin·백오피스 기획</span>
-          <span class="chip">API/FTP 연동 기획</span>
-          <span class="chip">배송 추적·정산 로직</span>
-          <span class="chip">IT Help Desk 운영</span>
-          <span class="chip">QA·테스트 시나리오</span>
-        </div>
-      </section>
+          <section>
+            <h2>경력 요약</h2>
+            <div class="experience">
+              <div class="exp-item">
+                <div class="exp-title">SSG.COM</div>
+                <div class="meta">물류플랫폼기획팀 · 플랫폼기획담당 팀원<br/>2022.06 – 재직 중</div>
+              </div>
+              <div class="exp-item">
+                <div class="exp-title">(주)큐익스프레스</div>
+                <div class="meta">플랫폼기획실 · 대리<br/>2022.01 – 2022.05 (5개월)</div>
+              </div>
+              <div class="exp-item">
+                <div class="exp-title">지오시스(유)</div>
+                <div class="meta">Qx Dev Division · 사원<br/>2018.12 – 2021.12 (3년)</div>
+              </div>
+            </div>
+          </section>
 
-      <section>
-        <h2>기술 스택</h2>
-        <div class="skills">
-          <span class="chip">MS-SQL</span>
-          <span class="chip">Python (Selenium, Requests, Pillow)</span>
-          <span class="chip">MS Office 상급</span>
-          <span class="chip">비즈니스 영어</span>
-        </div>
-      </section>
+          <section>
+            <h2>스킬</h2>
+            <div class="skills">
+              <span class="chip">배송·물류 서비스 기획</span>
+              <span class="chip">웹/앱 화면 설계</span>
+              <span class="chip">Admin·백오피스 기획</span>
+              <span class="chip">API/FTP 연동 기획</span>
+              <span class="chip">배송 추적·정산 로직</span>
+              <span class="chip">IT Help Desk 운영</span>
+              <span class="chip">QA·테스트 시나리오</span>
+            </div>
+          </section>
 
-      <section>
-        <h2>자격·어학</h2>
-        <ul class="list-tight">          
-          <li>건설기계조종사(3톤 미만 지게차)</li>
-          <li>유통관리사 2급</li>
-        </ul>
-      </section>
+          <section>
+            <h2>기술 스택</h2>
+            <div class="skills">
+              <span class="chip">MS-SQL</span>
+              <span class="chip">Python (Selenium, Requests, Pillow)</span>
+              <span class="chip">MS Office</span>
+              <span class="chip">비즈니스 영어</span>
+            </div>
+          </section>
 
-      <section>
-        <h2>기타</h2>
-        <ul class="list-tight">
-          <li>공군 병장 만기 제대 (2011 – 2013)</li>
-          <li>사회봉사 인증 (숭실대학교 총장)</li>       
-        </ul>
-      </section>
-    </aside>
+          <section>
+            <h2>자격증</h2>
+            <ul class="list-tight">
+              <li>건설기계조종사(3톤 미만 지게차)</li>
+              <li>유통관리사 2급</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>기타</h2>
+            <ul class="list-tight">
+              <li>공군 병장 만기 제대 (2011 – 2013)</li>
+              <li>사회봉사 인증 (숭실대학교 총장)</li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-thoughts">
+      <p style="margin:0 0 6px;">
+        판교사투리를 개인적으로 좋아하지는 않습니다. 애자일, 스크럼, 스프린트, 지라주세요, TC작성하세요 등,,,
+      </p>
+      <p style="margin:0;">
+        한국인들끼리 일하는데 왜 영어단어를 쓰는지, 직관적으로 이해하는 소통은 어려운지 늘 의문이 있습니다. 
+      </p>
+    </div>
   </div>
 
   <footer>
@@ -291,13 +354,11 @@
 </main>
 
 <script>
-  // 연도 자동 표기
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // 2018-12-01부터 오늘까지의 경력 기간(년, 개월) 동적 계산
   (function () {
     const startYear = 2018;
-    const startMonth = 12; // 1~12
+    const startMonth = 12;
     const startDay = 1;
 
     const start = new Date(startYear, startMonth - 1, startDay);
@@ -325,6 +386,30 @@
     if (el) {
       el.textContent = line;
     }
+  })();
+
+  (function () {
+    const buttons = document.querySelectorAll('.tab-button');
+    const panels = {
+      intro: document.getElementById('tab-intro'),
+      thoughts: document.getElementById('tab-thoughts')
+    };
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', function () {
+        const target = this.getAttribute('data-tab');
+
+        buttons.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+
+        Object.keys(panels).forEach(key => {
+          panels[key].classList.remove('active'));
+        });
+        if (panels[target]) {
+          panels[target].classList.add('active');
+        }
+      });
+    });
   })();
 </script>
 </body>
