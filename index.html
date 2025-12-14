@@ -24,7 +24,6 @@
     header{
       display:flex; gap:20px; align-items:center; margin-bottom:16px;
     }
-    /* 아바타: 96x96 정사각, 이미지 전체 보이도록 contain */
     .avatar{
       width:96px;
       height:96px;
@@ -32,7 +31,7 @@
       box-shadow: 0 6px 18px rgba(12,18,30,0.6);
       object-fit:contain;
       background:#020617;
-      padding:6px; /* 흰 배경 여백 확보해서 머리 안 잘림 */
+      padding:6px;
     }
     h1{margin:0; font-size:24px}
     p.lead{margin:6px 0 0; color:var(--muted); font-size:14px}
@@ -59,16 +58,10 @@
     .list-tight li{margin-bottom:2px;}
     .contact a{color:var(--accent); text-decoration:none; font-size:13px}
     footer{margin-top:14px; color:var(--muted); font-size:12px; text-align:center}
-    .links{display:flex; gap:10px; flex-wrap:wrap}
-    .btn{
-      display:inline-flex; gap:6px; align-items:center; padding:7px 10px; background:transparent; border:1px solid rgba(255,255,255,0.08);
-      color:var(--text); border-radius:8px; text-decoration:none; font-size:13px;
-    }
     .tagline{font-size:13px; color:var(--muted); margin-top:4px;}
     .two-col{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; font-size:13px;}
     @media (max-width:600px){ .two-col{grid-template-columns:1fr} }
 
-    /* 탭 스타일 */
     .tabs{
       margin-bottom:18px;
     }
@@ -123,16 +116,17 @@
     </div>
   </header>
 
-  <!-- 탭 영역 -->
   <div class="card tabs">
     <div class="tab-buttons">
       <button class="tab-button active" data-tab="intro">소개</button>
       <button class="tab-button" data-tab="thoughts">서비스기획으로 느낀 점</button>
     </div>
 
-    <!-- 소개 탭 -->
+    <div class="tab-panel active" id="tab-intro">
+      <!-- 여기에는 질문에 올려주신 소개/주요 성과/기본 정보 등 전체 내용이 그대로 들어가 있습니다 -->
     <div class="tab-panel active" id="tab-intro">
       <div class="grid">
+        <!-- 좌측: 소개 / 주요 성과 / 커리어 스토리 -->
         <div>
           <section>
             <h2>소개</h2>
@@ -226,7 +220,7 @@
             <p style="font-size:13px; line-height:1.6; margin-bottom:6px;">
               첫 서비스 기획은 Qoo10 플랫폼의 배송서비스 기획에서 시작했습니다.
               PC/모바일 웹 기반의 화면 설계뿐 아니라, 실제 배송 상태를 추적하는 Admin·API 구조까지 함께 이해하고 설계해 왔습니다.
-              그 중 C2C 배송 서비스 화면·후기 페이지는 프론트 개편시에도 늘 유지되었습니다.
+			  그 중 C2C 배송 서비스 화면·후기 페이지는 프론트 개편시에도 늘 유지되었습니다.
             </p>
             <p style="font-size:13px; line-height:1.6; margin-bottom:6px;">
               이후 관계사인 QXPRESS 플랫폼 기획실 셋업 멤버로 합류하여 Smartship, 해외 발송 대행, 가상계좌 입금 처리,
@@ -240,6 +234,7 @@
           </section>
         </div>
 
+        <!-- 우측: 기본 정보~기타 -->
         <aside>
           <section>
             <h2>기본 정보</h2>
@@ -338,6 +333,9 @@
       </div>
     </div>
 
+      <!-- 이미 올리신 intro 내용 유지 -->
+    </div>
+
     <div class="tab-panel" id="tab-thoughts">
       <p style="margin:0 0 6px;">
         판교사투리를 개인적으로 좋아하지는 않습니다. 애자일, 스크럼, 스프린트, 지라주세요, TC작성하세요 등,,,
@@ -399,11 +397,13 @@
       btn.addEventListener('click', function () {
         const target = this.getAttribute('data-tab');
 
+        // 버튼 active 토글
         buttons.forEach(b => b.classList.remove('active'));
         this.classList.add('active');
 
+        // 패널 active 토글 (여기 괄호 수정)
         Object.keys(panels).forEach(key => {
-          panels[key].classList.remove('active'));
+          panels[key].classList.remove('active');
         });
         if (panels[target]) {
           panels[target].classList.add('active');
