@@ -1,456 +1,280 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>이현재 — 물류·배송 웹서비스 기획자</title>
-  <style>
-    :root{
-      --bg:#0f1724; --card:#0b1220; --accent:#7c3aed; --muted:#94a3b8; --text:#e6eef8;
-      --glass: rgba(255,255,255,0.03);
-      font-family: Inter, "Noto Sans KR", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0; min-height:100vh; background:
-      radial-gradient(1200px 600px at -10% 10%, rgba(124,58,237,0.12), transparent 12%),
-      linear-gradient(180deg,#071027 0%, var(--bg) 60%);
-      color:var(--text); -webkit-font-smoothing:antialiased;
-      display:flex; align-items:center; justify-content:center; padding:40px;
-    }
-    .container{
-      width:100%; max-width:960px; backdrop-filter: blur(6px);
-    }
-    header{
-      display:flex; gap:20px; align-items:center; margin-bottom:16px;
-    }
-    .avatar{
-      width:96px;
-      height:96px;
-      border-radius:16px;
-      box-shadow: 0 6px 18px rgba(12,18,30,0.6);
-      object-fit:contain;
-      background:#020617;
-      padding:6px;
-    }
-    h1{margin:0; font-size:24px}
-    p.lead{margin:6px 0 0; color:var(--muted); font-size:14px}
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,255,255,0.04); padding:20px; border-radius:12px; box-shadow: 0 8px 30px rgba(2,6,23,0.6);
-    }
-    .grid{display:grid; grid-template-columns:1.6fr 1fr; gap:18px;}
-    @media (max-width:840px){
-      .grid{grid-template-columns:1fr}
-      .avatar{width:72px;height:72px}
-    }
-    section{margin-bottom:16px}
-    h2{font-size:15px; margin:0 0 8px}
-    .skills{display:flex; flex-wrap:wrap; gap:8px}
-    .chip{background:var(--glass); color:var(--text); padding:6px 10px; border-radius:999px; font-size:12px; border:1px solid rgba(255,255,255,0.04)}
-    .experience{display:flex; flex-direction:column; gap:10px; font-size:13px}
-    .exp-item{padding:10px; background:rgba(255,255,255,0.01); border-radius:10px; border:1px solid rgba(255,255,255,0.03)}
-    .exp-header{display:flex; justify-content:space-between; gap:8px; font-size:13px; margin-bottom:4px;}
-    .exp-title{font-weight:600}
-    .meta{color:var(--muted); font-size:12px}
-    .badge{display:inline-block; padding:2px 6px; border-radius:999px; border:1px solid rgba(148,163,184,0.5); font-size:11px; color:var(--muted); margin-left:6px;}
-    .list-tight{margin:4px 0 0; padding-left:18px; font-size:13px;}
-    .list-tight li{margin-bottom:2px;}
-    .contact a{color:var(--accent); text-decoration:none; font-size:13px}
-    footer{margin-top:14px; color:var(--muted); font-size:12px; text-align:center}
-    .tagline{font-size:13px; color:var(--muted); margin-top:4px;}
-    .two-col{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; font-size:13px;}
-    @media (max-width:600px){ .two-col{grid-template-columns:1fr} }
-
-    .tabs{
-      margin-bottom:18px;
-    }
-    .tab-buttons{
-      display:flex;
-      gap:8px;
-      margin-bottom:10px;
-      border-bottom:1px solid rgba(148,163,184,0.24);
-    }
-    .tab-button{
-      padding:6px 10px;
-      font-size:13px;
-      border:none;
-      background:transparent;
-      color:var(--muted);
-      cursor:pointer;
-      border-radius:8px 8px 0 0;
-    }
-    .tab-button.active{
-      color:var(--text);
-      background:rgba(15,23,42,0.8);
-      border:1px solid rgba(148,163,184,0.4);
-      border-bottom-color:transparent;
-    }
-    .tab-panel{
-      display:none;
-      font-size:13px;
-      line-height:1.6;
-      padding-top:4px;
-    }
-    .tab-panel.active{
-      display:block;
-    }
-  </style>
-</head>
-<body>
-<main class="container">
-  <header>
-    <img
-      class="avatar"
-      src="https://raw.githubusercontent.com/s20100879-cmd/webpage/refs/heads/main/20251214_212950370.jpg"
-      alt="이현재 프로필 사진"
-    />
-    <div>
-      <h1>이현재 — 물류·배송 웹서비스 기획자</h1>
-      <p class="lead">
-        커머스 물류·배송 도메인 특화 웹서비스 기획 · Admin/백오피스 · API/연동 · 자동화 물류센터·라스트마일 배송
-      </p>
-      <p class="tagline" id="career-line">
-        <!-- JS에서 동적 계산 -->
-      </p>
-    </div>
-  </header>
-
-  <div class="card tabs">
-    <div class="tab-buttons">
-      <button class="tab-button active" data-tab="intro">소개</button>
-      <button class="tab-button" data-tab="thoughts">서비스기획으로 느낀 점</button>
-    </div>
-
-    <div class="tab-panel active" id="tab-intro">
-      <!-- 여기에는 질문에 올려주신 소개/주요 성과/기본 정보 등 전체 내용이 그대로 들어가 있습니다 -->
-    <div class="tab-panel active" id="tab-intro">
-      <div class="grid">
-        <!-- 좌측: 소개 / 주요 성과 / 커리어 스토리 -->
-        <div>
-          <section>
-            <h2>소개</h2>
-            <p style="font-size:13px; line-height:1.6; margin-bottom:6px;">
-              이커머스/물류 현장 경험을 바탕으로, 주문·배송·정산 전 과정을 설계해 온 물류·배송 서비스 기획자입니다.
-              해외 C2C 플랫폼(Qoo10)부터 국내 커머스(SSG.COM)까지, 라스트마일 제휴·배송 추적·자동화 물류센터·백오피스 Admin까지
-              전주기를 직접 기획·운영해 왔습니다.
-            </p>
-            <p style="font-size:13px; line-height:1.6; margin-top:8px;">
-              언론 소개:
-              <a href="https://www.hankyung.com/article/202405136943i" target="_blank" rel="noopener" style="color:#a5b4fc; text-decoration:none;">
-                이마트몰 피킹 내비게이션
-              </a>
-              ·
-              <a href="https://www.businesspost.co.kr/BP?command=article_view&num=346816" target="_blank" rel="noopener" style="color:#a5b4fc; text-decoration:none;">
-                심야배송
-              </a>
-              관련 기사
-            </p>
-            <p style="font-size:13px; line-height:1.6; margin-top:4px;">
-              유튜브:
-              <a href="https://www.youtube.com/watch?v=4tbxUU3KVWM" target="_blank" rel="noopener" style="color:#a5b4fc; text-decoration:none;">
-                SSG NEO4센터 소개 (신세계그룹 공식 유튜브 채널)
-              </a>
-              영상에서 보여지는 자동화 물류센터의 피킹·패킹·출하 및 재고의 백오피스 시스템을 직접 기획·운영자 교육을 진행한 경험을 보유하고 있습니다.
-            </p>
-          </section>
-
-          <section>
-            <h2>주요 성과</h2>
-            <div class="experience">
-              <div class="exp-item">
-                <div class="exp-header">
-                  <div class="exp-title">QXPRESS 원격 입고 API 및 운송장 자동 발급 서비스 기획</div>
-                  <div class="meta">QXPRESS 플랫폼 기획실</div>
-                </div>
-                <ul class="list-tight">
-                  <li>고객사(WISH 등)에서 자사 물류센터로 직접 운송장 취득·데이터 전송이 가능하도록 원격 입고 API 신규 설계</li>
-                  <li>DHL·SAGAWA·CJ대한통운 등 제휴 배송사의 운송장·데이터 전송 자동화로 포털 수기 작업 시간 및 실수 감소</li>
-                </ul>
-              </div>
-
-              <div class="exp-item">
-                <div class="exp-header">
-                  <div class="exp-title">월 단위 배송비 자동 집계·청구 Admin 메뉴 기획</div>
-                  <div class="meta">QXPRESS Smartship</div>
-                </div>
-                <ul class="list-tight">
-                  <li>국가·법인별 이용 데이터를 기준으로 배송비를 월 단위 자동 집계하고, 청구서 PDF 생성·이메일 발송까지 자동화</li>
-                  <li>회계/정산 담당자의 수기 청구서 작성 업무를 제거하여, 반복 작업 및 오류를 크게 감소</li>
-                </ul>
-              </div>
-
-              <div class="exp-item">
-                <div class="exp-header">
-                  <div class="exp-title">Qoo10 배송 서비스 후기·만족도 프론트 페이지 기획</div>
-                  <div class="meta">Qoo10 플랫폼 기획실</div>
-                </div>
-                <ul class="list-tight">
-                  <li>배송 서비스 후기·평점을 출발국·서비스 도메인·사용자 언어 기준으로 한 화면에서 조회 가능한 웹 페이지 신규 설계</li>
-                  <li>서비스별 후기 비교가 쉬워져, SQM·운영팀의 품질 모니터링과 이용자 의사결정에 기여</li>
-                </ul>
-              </div>
-
-              <div class="exp-item">
-                <div class="exp-header">
-                  <div class="exp-title">배송사별 배송 현황 조회 Admin 개편</div>
-                  <div class="meta">Qoo10 / QXPRESS</div>
-                </div>
-                <ul class="list-tight">
-                  <li>전체 주문의 배송사·평균 배송 리드타임 조회 기능을 재구성하여, SQM KPI 관리에 최적화된 Admin 화면 설계</li>
-                  <li>실시간 조회 구조에서 월/일 단위 배치 집계 구조로 전환하는 개선 과제 정의 (대용량 데이터 대응)</li>
-                </ul>
-              </div>
-
-              <div class="exp-item">
-                <div class="exp-header">
-                  <div class="exp-title">자동화 물류센터·배송 기사 앱·백오피스 기획</div>
-                  <div class="meta">SSG.COM 물류플랫폼기획팀</div>
-                </div>
-                <ul class="list-tight">
-                  <li>이마트몰 쓱배송 기사 앱 및 백오피스, 백화점 배송 백오피스 운영 개선, 자동화센터 대출입·이관·폐기·집품 기능 기획</li>
-                  <li>이마트 점포 POG·집품 관련 시스템 기획이 외부 매체에 소개되며, 현장 운영 효율화 사례로 보도</li>
-                </ul>
-              </div>
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1" />
+      <title>이현재 — 물류·배송 웹서비스 기획자</title>
+      <style>
+         :root{
+         --bg:#f8fafc; --card:#ffffff; --accent:#0284c7; --muted:#64748b; --text:#0f172a;
+         --glass: rgba(2,132,199,0.05); --border:rgba(226,232,240,0.8);
+         font-family: Inter, "Noto Sans KR", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+         }
+         *{box-sizing:border-box}
+         body{
+         margin:0; min-height:100vh; background:
+         linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+         color:var(--text); -webkit-font-smoothing:antialiased;
+         display:flex; align-items:center; justify-content:center; padding:40px;
+         }
+         .container{
+         width:100%; max-width:960px;
+         }
+         header{
+         display:flex; gap:20px; align-items:center; margin-bottom:24px;
+         }
+         .avatar{
+         width:96px; height:96px; border-radius:16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+         object-fit:contain; background:#ffffff; padding:6px; border:1px solid var(--border);
+         }
+         h1{margin:0; font-size:24px; color:var(--text)}
+         p.lead{margin:6px 0 0; color:var(--muted); font-size:14px}
+         .card{
+         background:var(--card); border:1px solid var(--border); padding:24px; border-radius:12px; box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+         }
+         .grid{display:grid; grid-template-columns:1.6fr 1fr; gap:24px;}
+         @media (max-width:840px){
+         .grid{grid-template-columns:1fr}
+         .avatar{width:72px;height:72px}
+         }
+         section{margin-bottom:20px}
+         h2{font-size:15px; margin:0 0 10px; color:var(--text)}
+         .skills{display:flex; flex-wrap:wrap; gap:8px}
+         .chip{background:var(--glass); color:var(--text); padding:6px 10px; border-radius:999px; font-size:12px; border:1px solid var(--border)}
+         .experience{display:flex; flex-direction:column; gap:12px; font-size:13px}
+         .exp-item{padding:12px; background:rgba(2,132,199,0.02); border-radius:10px; border:1px solid var(--border)}
+         .exp-header{display:flex; justify-content:space-between; gap:8px; font-size:13px; margin-bottom:4px;}
+         .exp-title{font-weight:600; color:var(--text)}
+         .meta{color:var(--muted); font-size:12px}
+         .badge{display:inline-block; padding:2px 6px; border-radius:999px; border:1px solid var(--border); font-size:11px; color:var(--muted); margin-left:6px;}
+         .list-tight{margin:4px 0 0; padding-left:18px; font-size:13px;}
+         .list-tight li{margin-bottom:4px;}
+         .contact a{color:var(--accent); text-decoration:none; font-size:13px; font-weight:500}
+         footer{margin-top:20px; color:var(--muted); font-size:12px; text-align:center}
+         .tagline{font-size:13px; color:var(--muted); margin-top:4px;}
+         .two-col{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; font-size:13px;}
+         @media (max-width:600px){ .two-col{grid-template-columns:1fr} }
+         .amount{font-weight:600; color:var(--accent)}
+         .thoughts-box{background:var(--glass); border:1px solid var(--border); border-radius:10px; padding:12px; margin-top:10px}
+         .thoughts-text{font-size:13px; line-height:1.7; margin:0}
+         .thoughts-text p{margin:0 0 6px}
+         .thoughts-text p:last-child{margin-bottom:0}
+         .thoughts-text strong{color:var(--accent)}
+      </style>
+   </head>
+   <body>
+      <main class="container">
+         <header>
+            <img class="avatar" src="https://raw.githubusercontent.com/s20100879-cmd/webpage/refs/heads/main/20251214_212950370.jpg" alt="이현재 프로필 사진"/>
+            <div>
+               <h1>이현재 — 물류·배송 웹서비스 기획자</h1>
+               <p class="lead">커머스 물류·배송 도메인 특화 웹서비스 기획 · Admin/백오피스 · API/연동 · 자동화 물류센터·라스트마일 배송</p>
+               <p class="tagline" id="career-line"></p>
             </div>
-          </section>
-
-          <section>
-            <h2>자기소개 · 직무경험 요약</h2>
-            <p style="font-size:13px; line-height:1.6; margin-bottom:6px;">
-              첫 서비스 기획은 Qoo10 플랫폼의 배송서비스 기획에서 시작했습니다.
-              PC/모바일 웹 기반의 화면 설계뿐 아니라, 실제 배송 상태를 추적하는 Admin·API 구조까지 함께 이해하고 설계해 왔습니다.
-			  그 중 C2C 배송 서비스 화면·후기 페이지는 프론트 개편시에도 늘 유지되었습니다.
-            </p>
-            <p style="font-size:13px; line-height:1.6; margin-bottom:6px;">
-              이후 관계사인 QXPRESS 플랫폼 기획실 셋업 멤버로 합류하여 Smartship, 해외 발송 대행, 가상계좌 입금 처리,
-              배송비 청구, 월 단위 정산, 원격 입고 API, 대만 편의점(7-11·FamilyMart) 배송 등 물류 서비스 전반을 기획·운영했습니다.
-              IT Help Desk를 전담하며 MS-SQL·Python(Selenium)으로 데이터를 직접 추출·검증하고, 대량 사고를 선제적으로 대응해 왔습니다.
-            </p>
-            <p style="font-size:13px; line-height:1.6;">
-              SSG.COM에서는 이마트몰 쓱배송 기사 앱·백오피스, 자동화 물류센터, 백화점 배송/집품 등 고도화된 국내 커머스 환경에서
-              물류 서비스 기획 경험을 확장하고 있습니다.
-            </p>
-          </section>
-        </div>
-
-        <!-- 우측: 기본 정보~기타 -->
-        <aside>
-          <section>
-            <h2>기본 정보</h2>
-            <div class="two-col">
-              <div>
-                <div class="meta">이름</div>
-                <div style="font-size:13px;">이현재 (HyunJae Lee)</div>
-              </div>
-              <div>
-                <div class="meta">생년월일</div>
-                <div style="font-size:13px;">1991.05</div>
-              </div>
-              <div>
-                <div class="meta">성별</div>
-                <div style="font-size:13px;">남성</div>
-              </div>
-              <div>
-                <div class="meta">거주지</div>
-                <div style="font-size:13px;">인천광역시 부평구 </div>
-              </div>
+         </header>
+         <div class="card">
+            <div class="grid">
+               <!-- 좌측: 성과 중심 -->
+               <div>
+                  <section>
+                     <h2>주요 성과</h2>
+                     <div class="experience">
+                        <div class="exp-item">
+                           <div class="exp-header">
+                              <div class="exp-title">QXPRESS 원격 입고 API 및 운송장 자동 발급</div>
+                              <div class="meta">QXPRESS · 2021</div>
+                           </div>
+                           <ul class="list-tight">
+                              <li>고객사(WISH 등)에서 자사 물류센터로 직접 운송장 취득·데이터 전송 API 신규 설계</li>
+                              <li>DHL·SAGAWA·CJ대한통운 등 제휴 배송사 운송장 자동화로 포털 수기 작업 시간 및 실수 감소</li>
+                           </ul>
+                        </div>
+                        <div class="exp-item">
+                           <div class="exp-header">
+                              <div class="exp-title">월 단위 배송비 자동 집계·청구 Admin</div>
+                              <div class="meta">QXPRESS · 2021</div>
+                           </div>
+                           <ul class="list-tight">
+                              <li>국가·법인별 이용 데이터 기준 배송비 월 단위 자동 집계, 청구서 PDF 생성·이메일 발송 자동화</li>
+                              <li>회계/정산 담당자 수기 청구서 작성 업무 제거, 반복 작업 및 오류 크게 감소</li>
+                           </ul>
+                        </div>
+                        <div class="exp-item">
+                           <div class="exp-header">
+                              <div class="exp-title">배송기사 부정행위 적발 및 계약 해지</div>
+                              <div class="meta">SSG.COM · 2023</div>
+                           </div>
+                           <ul class="list-tight">
+                              <li>보냉가방 환불 이력 추적 시스템으로 부정 회수 <span class="amount">576,000원</span> 증빙</li>
+                              <li>mDPO 앱 데이터 분석으로 상위 1,2등 배송기사 부정 행위 확인 및 계약 해지</li>
+                              <li>DPO 회수 수량과 실물 불일치 시 운임 차감 프로세스 구현으로 부정 행위 근절</li>
+                           </ul>
+                        </div>
+                        <div class="exp-item">
+                           <div class="exp-header">
+                              <div class="exp-title">POG 고도화로 피킹 효율 15.8% 증가 및 연간 <span class="amount">7억원</span> 인건비 절감</div>
+                              <div class="meta">SSG.COM · 2023</div>
+                           </div>
+                           <ul class="list-tight">
+                              <li>피킹 화면에 POG 진열대 정보 표시, 대상 상품 별도 강조로 Staff 11명 대상 직접 측정</li>
+                              <li>매장 도면 활용 피킹 위치 확인 기능 구현으로 1인당 SKU 처리량 15.8% 증가 (최대 31%)</li>
+                              <li>매월 25명 인력 감축 가능, 연간 <span class="amount">7억원</span> 인건비 절감 효과 발생</li>
+                           </ul>
+                        </div>
+                        <div class="exp-item">
+                           <div class="exp-header">
+                              <div class="exp-title">공동현관 배송 서비스로 폐기금액 <span class="amount">70%</span> 절감 (연간 <span class="amount">3.8억원</span>)</div>
+                              <div class="meta">SSG.COM · 2024</div>
+                           </div>
+                           <ul class="list-tight">
+                              <li>빌라단지 공동현관 배송 케이스 확대로 대응배송률 57.3% 개선</li>
+                              <li>배송 실패로 인한 폐기금액 <span class="amount">70% 절감</span>, 연간 <span class="amount">3.8억원</span> 절감 효과 발생</li>
+                           </ul>
+                        </div>
+                        <div class="exp-item">
+                           <div class="exp-header">
+                              <div class="exp-title">자동화센터 샐비지 처리로 월 <span class="amount">1.9억원</span> 비용 절감</div>
+                              <div class="meta">SSG.COM · 2024</div>
+                           </div>
+                           <ul class="list-tight">
+                              <li>자동화센터 샐비지 처리 건수 22,268건 (2024년 3월 기준)</li>
+                              <li>폐기금액 1.9억원 중 30% 외부 판매로 <span class="amount">5,677만원</span> 비용 절감 효과</li>
+                           </ul>
+                        </div>
+                        <div class="exp-item">
+                           <div class="exp-header">
+                              <div class="exp-title">백화점 자동화 물류센터 업무 프로세스 구축 및 연간 <span class="amount">3.4억원</span> 인건비 절감</div>
+                              <div class="meta">SSG.COM · 2025</div>
+                           </div>
+                           <ul class="list-tight">
+                              <li>백화점 특화 포장 업무 프로세스 기획 및 QA/운영 환경 이중 테스트 수행</li>
+                              <li>현장 상주 2주간 하역사 관리자 및 임시 인원 대상 시스템 교육 직접 진행</li>
+                              <li>기존 51인 대비 38인 운영으로 연간 <span class="amount">3.4억원</span> 인건비 절감 효과 발생</li>
+                           </ul>
+                        </div>
+                     </div>
+                  </section>
+                  <section>
+                     <h2>서비스 기획으로 느낀 점</h2>
+                     <div class="thoughts-box">
+                        <div class="thoughts-text">
+                           <p>물류 서비스 기획의 핵심은 복잡한 현장을 단순화하는 <strong>해석 능력</strong>에 있다고 느낍니다.</p>
+                           <p>처음 Qoo10에서 배송 추적 Admin을 기획할 때, 단순히 화면을 만드는 데 그치지 않고 배송사 API의 제약과 현장 물류센터의 실제 프로세스를 이해해야만 사용자가 신뢰할 수 있는 데이터를 보여줄 수 있었습니다. 이 과정에서 '애자일', '스크럼' 같은 용어가 단순한 판교사투리가 아니라, <strong>복잡한 이해관계자를 하나로 묶는 공통어</strong>임을 깨달았습니다.</p>
+                           <p>특히 인도 개발팀과 협업하며 수동적 번역을 넘어, 왜 이 기능이 필요한지, 어떤 요청에 대응하려는지를 <strong>맥락과 목적을 담아 전달</strong>해야만 원하는 결과를 얻을 수 있었습니다. 단어는 정확히 전달됐지만 '왜'와 '어떻게'가 빠지면 결과는 왜곡되죠.</p>
+                           <p>최근 생성형 AI가 대중화되면서 이 질문은 더 깊어졌습니다. AI는 방향을 세세하게 짚어달라 요구했고, 결과물이 합당한지 검증하는 건 여전히 제 몫이었습니다. 기술이 장벽을 낮춰주리라 기대했건만 오히려 내 의도가 얼마나 정확하고 깊은지를 검증하는 <strong>거울</strong>이 되었습니다.</p>
+                           <p>이 모든 경험은 저에게 소통의 본질이 여전히 <strong>'서로의 요청을 올바르게 해석하는 것'</strong>에 있다고 느끼게 했습니다. 이는 감정이 아닌 맥락과 목적을 담은 의도입니다. 물류 현장의 작은 개선이 수많은 사용자에게 전달되는 환경에서, 이 해석 능력은 곧 서비스 품질을 결정합니다.</p>
+                        </div>
+                     </div>
+                  </section>
+               </div>
+               <!-- 우측: 기본 정보 -->
+               <aside>
+                  <section>
+                     <h2>기본 정보</h2>
+                     <div class="two-col">
+                        <div>
+                           <div class="meta">이름</div>
+                           <div style="font-size:13px;">이현재 (HyunJae Lee)</div>
+                        </div>
+                        <div>
+                           <div class="meta">생년월일</div>
+                           <div style="font-size:13px;">1991.05</div>
+                        </div>
+                        <div>
+                           <div class="meta">성별</div>
+                           <div style="font-size:13px;">남성</div>
+                        </div>
+                        <div>
+                           <div class="meta">거주지</div>
+                           <div style="font-size:13px;">인천광역시 부평구</div>
+                        </div>
+                     </div>
+                  </section>
+                  <section>
+                     <h2>연락처</h2>
+                     <p class="contact">
+                        이메일: <a href="mailto:october1129@naver.com">october1129@naver.com</a><br/>
+                     </p>
+                  </section>
+                  <section>
+                     <h2>학력</h2>
+                     <p class="meta">
+                        2010.03 – 2017.08<br/>
+                        숭실대학교 행정·경제학과 복수전공 학사, 서울<br/><br/>
+                     </p>
+                  </section>
+                  <section>
+                     <h2>경력 요약</h2>
+                     <div class="experience">
+                        <div class="exp-item">
+                           <div class="exp-title">SSG.COM</div>
+                           <div class="meta">물류플랫폼기획팀 · 플랫폼기획담당 팀원<br/>2022.06 – 재직 중</div>
+                        </div>
+                        <div class="exp-item">
+                           <div class="exp-title">(주)큐익스프레스</div>
+                           <div class="meta">플랫폼기획실 · 대리<br/>2022.01 – 2022.05 (5개월)</div>
+                        </div>
+                        <div class="exp-item">
+                           <div class="exp-title">지오시스(유)</div>
+                           <div class="meta">Qx Dev Division · 사원<br/>2018.12 – 2021.12 (3년)</div>
+                        </div>
+                     </div>
+                  </section>
+                  <section>
+                     <h2>스킬</h2>
+                     <div class="skills">
+                        <span class="chip">배송·물류 서비스 기획</span>
+                        <span class="chip">Admin·백오피스 기획</span>
+                        <span class="chip">API/FTP 연동 기획</span>
+                        <span class="chip">배송 추적·정산 로직</span>
+                        <span class="chip">IT Help Desk 운영</span>
+                        <span class="chip">QA·테스트 시나리오</span>
+                        <span class="chip">데이터 분석·검증</span>
+                        <span class="chip">비용 절감 기획</span>
+                     </div>
+                  </section>
+                  <section>
+                     <h2>기술 스택</h2>
+                     <div class="skills">
+                        <span class="chip">MS-SQL</span>
+                        <span class="chip">Python (Selenium, Requests)</span>
+                        <span class="chip">MS Office</span>
+                        <span class="chip">비즈니스 영어</span>
+                     </div>
+                  </section>
+                  <section>
+                     <h2>자격증</h2>
+                     <ul class="list-tight">
+                        <li>건설기계조종사(3톤 미만 지게차)</li>
+                        <li>유통관리사 2급</li>
+                     </ul>
+                  </section>
+                  <section>
+                     <h2>기타</h2>
+                     <ul class="list-tight">
+                        <li>공군 병장 만기 제대 (2011 – 2013)</li>
+                        <li>사회봉사 인증 (숭실대학교 총장)</li>
+                     </ul>
+                  </section>
+               </aside>
             </div>
-          </section>
-
-          <section>
-            <h2>연락처</h2>
-            <p class="contact">
-              이메일: <a href="mailto:october1129@naver.com">october1129@naver.com</a><br/>
-            </p>
-          </section>
-
-          <section>
-            <h2>학력</h2>
-            <p class="meta">
-              2010.03 – 2017.08<br/>
-              숭실대학교 행정·경제학과 복수전공 학사, 서울<br/><br/>
-            </p>
-          </section>
-
-          <section>
-            <h2>경력 요약</h2>
-            <div class="experience">
-              <div class="exp-item">
-                <div class="exp-title">SSG.COM</div>
-                <div class="meta">물류플랫폼기획팀 · 플랫폼기획담당 팀원<br/>2022.06 – 재직 중</div>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">(주)큐익스프레스</div>
-                <div class="meta">플랫폼기획실 · 대리<br/>2022.01 – 2022.05 (5개월)</div>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">지오시스(유)</div>
-                <div class="meta">Qx Dev Division · 사원<br/>2018.12 – 2021.12 (3년)</div>
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <h2>스킬</h2>
-            <div class="skills">
-              <span class="chip">배송·물류 서비스 기획</span>
-              <span class="chip">웹/앱 화면 설계</span>
-              <span class="chip">Admin·백오피스 기획</span>
-              <span class="chip">API/FTP 연동 기획</span>
-              <span class="chip">배송 추적·정산 로직</span>
-              <span class="chip">IT Help Desk 운영</span>
-              <span class="chip">QA·테스트 시나리오</span>
-            </div>
-          </section>
-
-          <section>
-            <h2>기술 스택</h2>
-            <div class="skills">
-              <span class="chip">MS-SQL</span>
-              <span class="chip">Python (Selenium, Requests, Pillow)</span>
-              <span class="chip">MS Office</span>
-              <span class="chip">비즈니스 영어</span>
-            </div>
-          </section>
-
-          <section>
-            <h2>자격증</h2>
-            <ul class="list-tight">
-              <li>건설기계조종사(3톤 미만 지게차)</li>
-              <li>유통관리사 2급</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2>기타</h2>
-            <ul class="list-tight">
-              <li>공군 병장 만기 제대 (2011 – 2013)</li>
-              <li>사회봉사 인증 (숭실대학교 총장)</li>
-            </ul>
-          </section>
-        </aside>
-      </div>
-    </div>
-
-      <!-- 이미 올리신 intro 내용 유지 -->
-    </div>
-
-<div class="tab-panel" id="tab-thoughts">
-  <p style="margin:0 0 6px;">
-    처음 서비스 기획자로 일을 시작했을 때부터 지금까지도 ‘왜 내 생각이 전달되지 않을까’라는 질문이 늘 따라다닙니다.
-  </p>
-
-  <p style="margin:0 0 6px;">
-처음엔 애자일, 스크럼, 지라 같은 용어들이 마치 판교사투리처럼 느껴졌습니다. 한국인끼리 영어 단어로 포장된 대화가 낯설었고 직관보다 용어에 익숙해진 소통 방식이 상대의 의도를 흐리게 만든다고 생각했죠.
- 그때는 '낫 놓고 기역자도 모른다'는 속담만 떠올렸습니다. 하지만 시간이 흐르며 깨달은 것은, 그 용어들이 문제가 아니라 내가 그 용어들이 지닌 맥락과 목적을 소화하지 못했다는 것이네요.
-  </p>
-
-  <p style="margin:0 0 6px;">
- 상대가 내 생각을 한 번에 이해하지 못할 때마다 스무고개를 해야 하는 건 오히려 내 설명이 과도하게 추상적이거나 불완전했다 것입니다. 
- 복잡한 상황을 잘게 쪼개면 그림이 흐려진다고 느꼈지만 그건 쪼개는 방식이 잘못된 것이지 쪼개면 안될 이유가 있을지 아직도 스스로 답변은 어렵습니다. 
-  </p>
-
-  <p style="margin:0 0 6px;">
-인도 개발팀과 협업하며 비슷한 실수를 반복했습니다. 현지 매니저가 소통의 다리를 놓아줬지만 결과는 기대에 미치지 못했고, "소통은 잘 된다"는것으로 시간을 흘려보내며 현장의 괴리만 커졌습니다. 
-돌이켜보면,  왜 이 기능이 필요한지, 사용자의 어떤 요청에 대응하려 하는지를 충분히 설명하지 않았던 탓이라 생각 합니다. 단어는 정확히 전달했지만 그 단어들이 왜 태어났는지에 대한 이야기는 빠져 있었습니다.
-  </p>
-
-  <p style="margin:0 0 6px;">
-이 모든 경험은 저에게 소통의 본질을 질문하게 했습니다. 그리고 생성형 AI가 대중화되면서 그 질문은 더 깊어졌습니다. AI 덕분에 한국인이던 외국인이던 개발자던 비전공자던 언어 장벽은 낮아졌습니다.
-  </p>
-
-  <p style="margin:0 0 6px;">
- 하지만 결과는 늘 원하는 대로 나오지 않았습니다. AI는 내 의도를 실현시키기 위해 방향을 세세하게 짚어달라고 요구했고 그 결과물이 합당한지 검증하는 건 여전히 제 몫이었습니다. 
-기술이 장벽을 낮춰주리라 기대했건만 오히려 내 의도가 얼마나 정확하고 깊은지를 검증하는 거울이 되었습니다.
-  </p>
-
-  <p style="margin:0 0 6px;">
-AI가 번역하고 요약해주는 내용은 표면적 이해만 가능하게 하고 핵심인 '왜'와 '어떻게'는 여전히 인간이 채워야 하는 공백으로 남습니다. 
-단어는 정확히 전달돼도 목적과 상황이 빠지면 결과는 왜곡되죠. 소통의 본질이 여전히 '서로의 요청을 해석하는 것'에 있다고 느낍니다. 이는 감정이 아닌 맥락과 목적을 담은 의도입니다.
-  </p>
-
-  <p style="margin:0 0 6px;">
-그래서 기존 내용에 대한 모든 이해가 없이도 말로만 일하는 게 가능한 것이 서비스 기획인 듯 합니다. 그 방향이 맞으면 좋고, 안 돼도 그만이라는 역량말입니다. 
-아무리 그럴 수 있다고 해도 내용을 내 수준에서 파악하지 못한 채 이야기하지 않는 나의 특징을 좋게 표현하자면 '무책임하지 않으려는 신중함' 이지만
-  </p>
-
-  <p style="margin:0 0 6px;">
-사실 명확성을 포기한 채 무사안일을 택하려는 방어는 아니었을까 자문합니다. 
-  </p>
-
-  <p style="margin:0;">
-    아무리 그럴 수 있다고 해도 내용을 나의 수준에서 파악하지 못한 상황에서 이야기나 행동을 하지 않는 나의 특징은
-    무책임한 것인지 신중한 것인지, 과연 세상에서는 어떻게 보여질지 헷갈리는 게 요즘의 생각입니다.
-  </p>
-</div>
-
-
-  <footer>
-    © <span id="year"></span> 이현재 — 물류·배송 웹서비스 기획자
-  </footer>
-</main>
-
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  (function () {
-    const startYear = 2018;
-    const startMonth = 12;
-    const startDay = 1;
-
-    const start = new Date(startYear, startMonth - 1, startDay);
-    const today = new Date();
-
-    let years = today.getFullYear() - start.getFullYear();
-    let months = today.getMonth() - start.getMonth();
-    let days = today.getDate() - start.getDate();
-
-    if (days < 0) {
-      months -= 1;
-    }
-    if (months < 0) {
-      years -= 1;
-      months += 12;
-    }
-
-    const yearText = years > 0 ? years + "년 " : "";
-    const monthText = months > 0 ? months + "개월 " : "";
-    const careerText = (yearText + monthText).trim() || "신입";
-
-    const line = careerText + " 경력 · Qoo10·QXPRESS 물류 플랫폼 → SSG.COM 물류플랫폼기획팀";
-
-    const el = document.getElementById("career-line");
-    if (el) {
-      el.textContent = line;
-    }
-  })();
-
-  (function () {
-    const buttons = document.querySelectorAll('.tab-button');
-    const panels = {
-      intro: document.getElementById('tab-intro'),
-      thoughts: document.getElementById('tab-thoughts')
-    };
-
-    buttons.forEach(btn => {
-      btn.addEventListener('click', function () {
-        const target = this.getAttribute('data-tab');
-
-        // 버튼 active 토글
-        buttons.forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-
-        // 패널 active 토글 (여기 괄호 수정)
-        Object.keys(panels).forEach(key => {
-          panels[key].classList.remove('active');
-        });
-        if (panels[target]) {
-          panels[target].classList.add('active');
-        }
-      });
-    });
-  })();
-</script>
-</body>
+         </div>
+         <footer>© <span id="year"></span> 이현재 — 물류·배송 웹서비스 기획자</footer>
+      </main>
+      <script>
+         document.getElementById('year').textContent = new Date().getFullYear();
+         
+         (function () {
+           const startYear = 2018, startMonth = 12, startDay = 1;
+           const start = new Date(startYear, startMonth - 1, startDay);
+           const today = new Date();
+           let years = today.getFullYear() - start.getFullYear();
+           let months = today.getMonth() - start.getMonth();
+           if (today.getDate() < start.getDate()) months--;
+           if (months < 0) { years--; months += 12; }
+           const careerText = (years ? years + "년 " : "") + (months ? months + "개월 " : "").trim() || "신입";
+           document.getElementById("career-line").textContent = careerText + " 경력 · Qoo10·QXPRESS 물류 플랫폼 → SSG.COM 물류플랫폼기획팀";
+         })();
+      </script>
+   </body>
 </html>
