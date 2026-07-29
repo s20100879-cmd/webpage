@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서비스 기획자 이현재 포트폴리오</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap');
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #1e293b; }
+        ::-webkit-scrollbar-thumb { background: #475569; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+        .slide-transition { transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between overflow-x-hidden">
+
+    <header class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50 px-4 py-3 lg:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <span class="bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">PM</span>
+                <h1 class="text-lg font-bold text-slate-100 tracking-tight">이현재 <span class="text-slate-400 text-sm font-normal">Portfolio</span></h1>
+            </div>
+            <nav class="flex flex-wrap justify-center gap-1 bg-slate-950 p-1 rounded-lg border border-slate-800 text-xs sm:text-sm">
+                <button onclick="goToCategory('intro')" id="btn-cat-intro" class="px-3 py-1.5 rounded-md font-medium transition-colors text-blue-400 bg-slate-800">소개</button>
+                <button onclick="goToCategory('part1')" id="btn-cat-part1" class="px-3 py-1.5 rounded-md font-medium transition-colors text-slate-400 hover:text-white">Qoo10 & Qxpress</button>
+                <button onclick="goToCategory('part2')" id="btn-cat-part2" class="px-3 py-1.5 rounded-md font-medium transition-colors text-slate-400 hover:text-white">SSG 이마트</button>
+                <button onclick="goToCategory('part3')" id="btn-cat-part3" class="px-3 py-1.5 rounded-md font-medium transition-colors text-slate-400 hover:text-white">자동화센터</button>
+                <button onclick="goToCategory('part4')" id="btn-cat-part4" class="px-3 py-1.5 rounded-md font-medium transition-colors text-slate-400 hover:text-white">역량 & 마무리</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center p-4 lg:p-8 max-w-7xl mx-auto w-full">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl shadow-black/50 w-full min-h-[600px] flex flex-col justify-between overflow-hidden relative">
+            <div id="slide-container" class="p-6 md:p-10 lg:p-12 flex-grow slide-transition opacity-100 transform translate-x-0 overflow-y-auto max-h-[75vh]">
+            </div>
+            <div class="bg-slate-950/80 border-t border-slate-800/80 px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 z-10">
+                <div class="flex items-center gap-3">
+                    <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Slide</span>
+                    <div class="w-32 sm:w-48 bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div id="progress-bar" class="bg-gradient-to-r from-blue-500 to-indigo-500 h-full transition-all duration-300" style="width: 2.4%;"></div>
+                    </div>
+                    <span id="slide-counter" class="text-xs font-bold text-slate-400">1 / 41</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button id="btn-prev" onclick="prevSlide()" class="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700/50 disabled:opacity-30 disabled:cursor-not-allowed transition-colors" disabled>
+                        <svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button id="btn-next" onclick="nextSlide()" class="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-medium flex items-center gap-2 text-sm shadow-lg shadow-indigo-500/20 transition-all">
+                        <span>다음</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center py-4 text-xs text-slate-600 border-t border-slate-950 bg-slate-950/50">
+        <p>© 2026 이현재. All rights reserved.</p>
+    </footer>
+
+    <script>
+    const slides = [
+        // ===== SLIDE 1: TITLE =====
+        {
+            id: 1, category: 'intro',
+            title: "PRODUCT MANAGER PORTFOLIO",
+            subtitle: "이현재",
+            content: `
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[400px]">
+                <div class="lg:col-span-7 space-y-6">
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-white leading-tight">이현재</h2>
+                    <p class="text-slate-400 text-lg">Product Manager Portfolio</p>
+                </div>
+                <div class="lg:col-span-5 bg-slate-800/40 border border-slate-800 p-6 md:p-8 rounded-2xl space-y-6">
+                    <div>
+                        <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">학력</h3>
+                        <p class="text-sm text-slate-200 font-semibold">숭실대학교 졸업</p>
+                        <p class="text-xs text-slate-400">행정학 / 경제학</p>
+                    </div>
+                    <div class="border-t border-slate-700 pt-4">
+                        <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">경력</h3>
+                        <p class="text-sm text-slate-200 font-semibold">서비스 기획 총 7년 이상</p>
+                        <p class="text-xs text-slate-400">Qoo10/Qxpress 3년 5개월 · SSG.COM 재직중</p>
+                    </div>
+                    <div class="border-t border-slate-700 pt-4">
+                        <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">보유 역량</h3>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2 py-0.5 bg-slate-900 border border-slate-700 text-slate-300 rounded text-xs font-semibold">SQL</span>
+                            <span class="px-2 py-0.5 bg-slate-900 border border-slate-700 text-slate-300 rounded text-xs font-semibold">Python</span>
+                            <span class="px-2 py-0.5 bg-slate-900 border border-slate-700 text-slate-300 rounded text-xs font-semibold">Axure</span>
+                            <span class="px-2 py-0.5 bg-slate-900 border border-slate-700 text-slate-300 rounded text-xs font-semibold">JIRA</span>
+                            <span class="px-2 py-0.5 bg-slate-900 border border-slate-700 text-slate-300 rounded text-xs font-semibold">Confluence</span>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 2: CONTENTS 1 =====
+        {
+            id: 2, category: 'intro',
+            title: "CONTENTS",
+            subtitle: "Index",
+            content: `
+            <div class="min-h-[400px] flex flex-col justify-center">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-slate-950 border border-slate-800 p-6 rounded-2xl">
+                        <div class="text-xs font-bold text-blue-500 tracking-wider mb-2">01</div>
+                        <h3 class="text-base font-bold text-white mb-3">Qoo10 & Qxpress 글로벌 물류 플랫폼 기획</h3>
+                        <ul class="space-y-2 text-xs text-slate-400">
+                            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1 shrink-0"></span>[Project 1] C2C 배송 서비스 만족도 통합 조회</li>
+                            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1 shrink-0"></span>[Project 2] 대만 패밀리마트 편의점 배송 서비스 론칭</li>
+                            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1 shrink-0"></span>[Project 3] Smart AI 사전 운송장 발번 및 API 연동</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 p-6 rounded-2xl">
+                        <div class="text-xs font-bold text-indigo-500 tracking-wider mb-2">02</div>
+                        <h3 class="text-base font-bold text-white mb-3">SSG.COM 이마트, 백화점, 자동화물류센터 기획</h3>
+                        <ul class="space-y-2 text-xs text-slate-400">
+                            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-1 shrink-0"></span>[Project 4] POG 내비게이션 시스템 구축 (피킹 동선 최적화)</li>
+                            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-1 shrink-0"></span>[Project 5] 친환경 배송 프로세스 전환 (포장재 절감)</li>
+                            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-1 shrink-0"></span>[Project 6] 공동현관 대응 배송 및 보냉가방 부정회수 방지</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 p-6 rounded-2xl">
+                        <div class="text-xs font-bold text-emerald-500 tracking-wider mb-2">03</div>
+                        <h3 class="text-base font-bold text-white mb-3">SSG.COM 자동화 물류센터 구축 및 고도화</h3>
+                        <ul class="space-y-2 text-xs text-slate-400">
+                            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1 shrink-0"></span>[Project 7] 백오피스-WMS 백화점 주문 단계별 상태 전이 표준화</li>
+                            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1 shrink-0"></span>[Project 8] 김포센터 냉장/냉동 합포장 및 오포센터 냉동 택배 분기</li>
+                            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1 shrink-0"></span>[Project 9] WMS 3D 체적 기반 합포장 박스 추천 로직</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 3: CONTENTS 2 =====
+        {
+            id: 3, category: 'intro',
+            title: "CONTENTS",
+            subtitle: "Index (계속)",
+            content: `
+            <div class="min-h-[400px] flex flex-col justify-center">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
+                    <div class="bg-slate-950 border border-slate-800 p-6 rounded-2xl">
+                        <div class="text-xs font-bold text-purple-500 tracking-wider mb-2">04</div>
+                        <h3 class="text-base font-bold text-white mb-3">시스템 연동 및 AI 활용 역량</h3>
+                        <ul class="space-y-2 text-xs text-slate-400">
+                            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1 shrink-0"></span>Python 기반 운영 데이터 이상 대응</li>
+                            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1 shrink-0"></span>SQL 기반 이상 탐지 & 데이터 보정</li>
+                            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1 shrink-0"></span>맺음말</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 4: ABOUT ME =====
+        {
+            id: 4, category: 'intro',
+            title: "ABOUT ME",
+            subtitle: "핵심 역량 소개",
+            content: `
+            <div class="min-h-[400px] flex flex-col justify-center space-y-8">
+                <div class="border-l-4 border-blue-500 pl-6 py-2">
+                    <p class="text-lg md:text-xl font-bold text-slate-100 leading-snug">
+                        글로벌 커머스의 배송 프로세스를 자동화 서비스로 구현하고<br>
+                        SQL 기반의 현장 데이터 분석을 통해 물류 운영 비효율을 개선해 왔습니다.
+                    </p>
+                    <p class="text-sm text-slate-400 mt-3 leading-relaxed">
+                        시스템 설계 시 현장 작업자와 운영팀의 프로세스 병목을 우선적으로 파악하고<br>
+                        이를 시스템 요구사항에 반영하여 업무효율을 높인 경험이 있습니다.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-slate-950/40 p-5 rounded-xl border border-slate-800">
+                        <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 mb-4 font-bold text-sm">01</div>
+                        <h4 class="font-bold text-slate-200 mb-2 text-sm">글로벌 도메인 전문성</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">한국, 일본, 중국, 대만, 동남아시아, 미주 대상 국제 물류 프로세스 연동</p>
+                    </div>
+                    <div class="bg-slate-950/40 p-5 rounded-xl border border-slate-800">
+                        <div class="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-4 font-bold text-sm">02</div>
+                        <h4 class="font-bold text-slate-200 mb-2 text-sm">자동화 물류설비</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">집품/출고, 백화점 파트너오피스, 라스트마일 배송기사 앱 설계</p>
+                    </div>
+                    <div class="bg-slate-950/40 p-5 rounded-xl border border-slate-800">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-4 font-bold text-sm">03</div>
+                        <h4 class="font-bold text-slate-200 mb-2 text-sm">데이터 기반 문제 해결</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">SQL로 Raw 데이터를 분석하여 현장의 병목과 비용 누수를 발굴하고 개선안을 도출</p>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 5: PART 1 DIVIDER =====
+        {
+            id: 5, category: 'part1',
+            title: "PART 01",
+            subtitle: "Qoo10 & Qxpress 글로벌 물류 플랫폼 기획",
+            content: `
+            <div class="min-h-[400px] flex flex-col justify-center items-center text-center space-y-6">
+                <span class="text-6xl font-extrabold text-slate-800">01</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white">Qoo10 & Qxpress</h2>
+                <p class="text-xl text-slate-400">글로벌 물류 플랫폼 기획</p>
+                <div class="flex flex-wrap justify-center gap-3 mt-4">
+                    <span class="px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs font-medium">3개 프로젝트</span>
+                    <span class="px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs font-medium">5개 이상의 신규 서비스 론칭</span>
+                    <span class="px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs font-medium">대만 · 일본 · 미국 · 동남아 시장 대상 물류 프로세스 현지화</span>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 6: P1 과제 =====
+        {
+            id: 6, category: 'part1',
+            title: "C2C 배송 서비스 만족도 통합 조회",
+            subtitle: "PART 1 · PROJECT 1 — 과제",
+            content: `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[400px] items-center">
+                <div class="space-y-6">
+                    <span class="px-2.5 py-1 bg-red-500/10 text-red-400 rounded-full text-xs font-bold uppercase tracking-wider">문제 상황</span>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">•</span>20개 이상의 C2C 배송 서비스 후기가 상품 페이지별로 파편화되어 있어 서비스 간 품질 비교가 불가능했습니다.</li>
+                        <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">•</span>SQM팀의 KPI 측정 및 데이터 취합 방식이 수작업으로 이루어져 운영 비효율이 발생했습니다.</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-6">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 pb-3">데이터 발견 & 가설</h4>
+                    <div class="flex items-center gap-4">
+                        <div class="text-center">
+                            <span class="text-3xl font-extrabold text-red-400 block">30%</span>
+                            <span class="text-xs text-slate-400">배송 관련 CS 문의 중<br>'서비스 비교' 관련 비율</span>
+                        </div>
+                    </div>
+                    <div class="bg-blue-500/10 border border-blue-500/20 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-blue-400 mb-1">가설</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">"모든 C2C 배송 서비스의 후기를 출발 국가/도메인별로 통합하여 한 페이지에서 조회할 수 있다면, 사용자의 서비스 선택 신뢰도가 높아지고 SQM의 데이터 취합 시간이 획기적으로 단축될 것이다."</p>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 7: P1 해결 =====
+        {
+            id: 7, category: 'part1',
+            title: "C2C 배송 서비스 만족도 통합 조회",
+            subtitle: "PART 1 · PROJECT 1 — 해결방안",
+            content: `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[400px] items-center">
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 pb-3">기획</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed">출발 국가(한국/일본/중국 등)와 도메인(Qoo10 JP/Qoo10 SG 등)을 기준으로 상품을 분류하고, 후기와 Q&A를 탭으로 구분한 <strong class="text-white">반응형 Web/Mobile 페이지</strong>를 설계했습니다.</p>
+                    <div class="space-y-2 text-xs text-slate-400 mt-4">
+                        <p class="font-semibold text-slate-300">PC 화면</p>
+                        <p>서비스 만족 후기를 하나의 페이지에서 확인하도록 서비스를 제공하는 상품 별로 나열</p>
+                        <p class="font-semibold text-slate-300 mt-3">MOBILE 화면</p>
+                        <p>Review & Item Q&A 클릭 시 해당 서비스 만족 후기 or 질의응답을 보여주는 화면을 새창 열기로 이동</p>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full text-xs font-bold uppercase tracking-wider">성과</span>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li class="flex items-start gap-2"><span class="text-emerald-400">✔</span>신규 페이지 'Service Review' 오픈</li>
+                        <li class="flex items-start gap-2"><span class="text-emerald-400">✔</span>배송 품질 개선의 기초 데이터로 활용</li>
+                    </ul>
+                    <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-slate-300 mb-1">시사점</p>
+                        <p class="text-xs text-slate-400">추후 과제: 후기 정렬 순서의 객관성 확보 필요</p>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 8: P2 과제 =====
+        {
+            id: 8, category: 'part1',
+            title: "대만 패밀리마트 편의점 배송 서비스 론칭",
+            subtitle: "PART 1 · PROJECT 2 — 과제",
+            content: `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[400px] items-center">
+                <div class="space-y-6">
+                    <span class="px-2.5 py-1 bg-red-500/10 text-red-400 rounded-full text-xs font-bold uppercase tracking-wider">문제 상황</span>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">•</span>대만 이커머스 시장은 편의점 수령 비중이 60% 이상을 차지하나, 자사 물류망 내 해당 옵션의 부재로 대만 지역 경쟁력 확보에 한계가 있었습니다.</li>
+                        <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">•</span>대만 법인 데이터 확인 결과, 현지 발송 화물 문의 중 약 45%가 편의점 배송 관련 요청으로 파악되었습니다.</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-6">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 pb-3">대만 이커머스 시장 특성</h4>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-slate-400">편의점 수령 비중 (대만 전체)</span>
+                            <span class="font-bold text-white">60%+</span>
+                        </div>
+                        <div class="w-full bg-slate-800 h-2 rounded-full"><div class="bg-indigo-500 h-full rounded-full" style="width:60%"></div></div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-slate-400">Qxpress 대만 발송 화물 중 편의점 요청</span>
+                            <span class="font-bold text-white">45%</span>
+                        </div>
+                        <div class="w-full bg-slate-800 h-2 rounded-full"><div class="bg-blue-500 h-full rounded-full" style="width:45%"></div></div>
+                    </div>
+                    <div class="bg-blue-500/10 border border-blue-500/20 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-blue-400 mb-1">가설</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">"대만 패밀리마트와 제휴하여, 국내 및 해외 발송 화물을 고객 지정 편의점에서 수령할 수 있게 한다면, 대만 지역 경쟁력이 강화되고 신규 고객 유입이 증가할 것이다."</p>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 9: P2 해결 =====
+        {
+            id: 9, category: 'part1',
+            title: "대만 패밀리마트 편의점 배송 서비스 론칭",
+            subtitle: "PART 1 · PROJECT 2 — 해결방안",
+            content: `
+            <div class="min-h-[400px] flex flex-col justify-center space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 mb-3 font-bold text-xs">01</div>
+                        <h4 class="font-bold text-slate-200 text-sm mb-2">프로세스 정립</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">패밀리마트와 2개월간 협의를 통해:</p>
+                        <ul class="text-xs text-slate-400 mt-2 space-y-1">
+                            <li>· 운송장 번호 생성 규칙</li>
+                            <li>· 매장 코드 매핑</li>
+                            <li>· 반품 처리 프로세스 정의</li>
+                        </ul>
+                        <p class="text-xs text-slate-400 mt-2">Qxpress와의 연동을 위한 인터페이스 테스트 진행</p>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <div class="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-3 font-bold text-xs">02</div>
+                        <h4 class="font-bold text-slate-200 text-sm mb-2">화면 기획</h4>
+                        <ul class="text-xs text-slate-400 space-y-1">
+                            <li>· 주문 생성 시 '도착 국가 = 대만' 조건에서 편의점 서비스 옵션 활성화</li>
+                            <li>· 구글 지도 연동으로 고객이 직접 수령 지점 선택 가능한 UX 설계</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-3 font-bold text-xs">03</div>
+                        <h4 class="font-bold text-slate-200 text-sm mb-2">관리자 기능</h4>
+                        <p class="text-xs text-slate-400">Admin 메뉴에 '편의점 배송 현황' 대시보드 추가</p>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl text-center">
+                    <span class="text-xs text-slate-500">서비스 플로우</span>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 10: P2 성과 =====
+        {
+            id: 10, category: 'part1',
+            title: "대만 패밀리마트 편의점 배송 서비스 론칭",
+            subtitle: "PART 1 · PROJECT 2 — 성과",
+            content: `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[400px] items-center">
+                <div class="space-y-6">
+                    <span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full text-xs font-bold uppercase tracking-wider">성과</span>
+                    <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl text-center">
+                        <span class="text-3xl font-extrabold text-emerald-400 block">+35%</span>
+                        <span class="text-xs text-slate-400">출시 3개월 이후 전년 대비 대만 지역 월간 주문량 증가 추이</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li class="flex items-start gap-2"><span class="text-emerald-400">✔</span>Qxpress 플랫폼에 '편의점 배송' 서비스 신규 론칭</li>
+                        <li class="flex items-start gap-2"><span class="text-emerald-400">✔</span>대만 법인, 패밀리마트 IT팀, Qxpress 개발팀(상해)와 줌 미팅 주재</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 pb-3">협업 주체</h4>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li><strong class="text-slate-200">대만 법인</strong> — 현지 시장 요구사항 검토</li>
+                        <li><strong class="text-slate-200">패밀리마트 IT팀</strong> — API/FTP 스펙 가이드</li>
+                        <li><strong class="text-slate-200">Qxpress 개발팀(한국/상해)</strong> — 시스템 개발 및 배포, 중국어 소통</li>
+                        <li><strong class="text-slate-200">기획자(본인)</strong> — 전체 일정 조율 및 스펙 정의</li>
+                    </ul>
+                    <div class="bg-slate-900 p-4 rounded-xl mt-4">
+                        <p class="text-xs font-bold text-slate-300 mb-1">시사점</p>
+                        <p class="text-xs text-slate-400 leading-relaxed">이종 시스템 간 연동 프로젝트에서는 API 사양 정의뿐만 아니라, 현지 점포의 오배송 및 미수령 화물 처리를 위한 예외 처리 프로세스까지 백오피스에 반영해야 시스템 안정성을 확보할 수 있음을 깨달았습니다.</p>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 11: P3 과제 =====
+        {
+            id: 11, category: 'part1',
+            title: "Smart AI 운송장 즉시 발번 및 API 연동",
+            subtitle: "PART 1 · PROJECT 3 — 과제",
+            content: `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[400px] items-center">
+                <div class="space-y-6">
+                    <span class="px-2.5 py-1 bg-red-500/10 text-red-400 rounded-full text-xs font-bold uppercase tracking-wider">문제 상황</span>
+                    <p class="text-sm text-slate-300 leading-relaxed">해외 발송 판매자(Seller)들은 물류센터 입고 전이라도 라스트마일 배송사 운송장 번호가 필요했지만, 기존 프로세스는 입고 후에야 번호가 발급되어 사전 포장 작업이 지연되었습니다.</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl text-center">
+                            <span class="text-2xl font-extrabold text-red-400 block">25%</span>
+                            <span class="text-xs text-slate-400">영업팀 접수 고객 불만 중<br>"운송장 발번 지연" 관련 비율</span>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl text-center">
+                            <span class="text-2xl font-extrabold text-red-400 block">1hr</span>
+                            <span class="text-xs text-slate-400">물류센터 담당자의 외부 포털<br>접속 하루 평균 소모 시간</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+                    <div class="bg-blue-500/10 border border-blue-500/20 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-blue-400 mb-1">가설</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">"고정 노선을 이용하는 프리미엄 셀러에 한해, 주문 등록 시점에 Last Mile 운송장을 사전 할당하고, 외부 배송사 API를 통해 자동 전송한다면 판매자 운영 효율과 물류센터 생산성이 동시에 향상될 것이다."</p>
+                    </div>
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mt-4">연동 대상 글로벌 배송사</h4>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <div class="bg-slate-900 p-2 rounded-lg text-center"><span class="text-slate-200 font-semibold">DHL EC</span><br><span class="text-slate-500">유럽/글로벌</span></div>
+                        <div class="bg-slate-900 p-2 rounded-lg text-center"><span class="text-slate-200 font-semibold">YTO</span><br><span class="text-slate-500">중국</span></div>
+                        <div class="bg-slate-900 p-2 rounded-lg text-center"><span class="text-slate-200 font-semibold">Pos Laju</span><br><span class="text-slate-500">말레이시아</span></div>
+                        <div class="bg-slate-900 p-2 rounded-lg text-center"><span class="text-slate-200 font-semibold">SAGAWA</span><br><span class="text-slate-500">일본</span></div>
+                    </div>
+                    <p class="text-xs text-slate-400">각 배송사의 API 스펙을 분석하고 자사 시스템에서 운송장 라벨 출력과 배송 추적 데이터 전송을 자동화하는 인터페이스를 기획했습니다.</p>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 12: P3 해결 =====
+        {
+            id: 12, category: 'part1',
+            title: "Smart AI 운송장 즉시 발번 및 API 연동",
+            subtitle: "PART 1 · PROJECT 3 — 해결방안 & Design",
+            content: `
+            <div class="min-h-[400px] flex flex-col justify-center space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 mb-3 font-bold text-xs">01</div>
+                        <h4 class="font-bold text-slate-200 text-sm mb-2">운송장 사전 발번</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">'Print Smart AI Waybill' 권한을 신규 생성</p>
+                        <p class="text-xs text-slate-400 mt-1">사업부와 협의하여 조건을 충족하는 이용자에게만 버튼 노출:</p>
+                        <ul class="text-xs text-slate-400 mt-1 space-y-1"><li>· 고정 노선 이용</li><li>· 사전 승인 셀러</li></ul>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <div class="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-3 font-bold text-xs">02</div>
+                        <h4 class="font-bold text-slate-200 text-sm mb-2">API 연동 자동화</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">DHLEC, YTO, Pos Laju, SAGAWA 등 6개 글로벌 배송사의 API 스펙을 분석</p>
+                        <p class="text-xs text-slate-400 mt-1">시스템에서 운송장 라벨 출력과 추적 데이터 전송을 수행하는 인터페이스 기획</p>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-3 font-bold text-xs">03</div>
+                        <h4 class="font-bold text-slate-200 text-sm mb-2">Admin 개편</h4>
+                        <p class="text-xs text-slate-400">위탁 배송사별 운송장 출력 이력과 오류 로그를 한눈에 조회할 수 있는 대시보드 추가</p>
+                    </div>
+                </div>
+                <div class="bg-indigo-950/20 border border-indigo-900/30 p-4 rounded-xl">
+                    <p class="text-xs font-bold text-indigo-400 mb-1">PERMISSION-BASED DESIGN</p>
+                    <p class="text-xs text-slate-300 leading-relaxed">모든 이용자에게 동일한 기능을 제공하지 않고, '필요한 사용자'와 '상황'을 세분화하여 선택과 집중하는 접근 방식을 취했습니다. 고정 노선 + 사전 승인이라는 명확한 기준을 통해 리스크를 최소화하면서도 핵심 사용자의 요구사항을 해결했습니다.</p>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 13: P3 성과 =====
+        {
+            id: 13, category: 'part1',
+            title: "Smart AI 운송장 즉시 발번 및 API 연동",
+            subtitle: "PART 1 · PROJECT 3 — Collaboration & 성과",
+            content: `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[400px] items-center">
+                <div class="space-y-6">
+                    <span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full text-xs font-bold uppercase tracking-wider">성과</span>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl text-center">
+                            <span class="text-xl font-extrabold text-emerald-400 block">6hr → 즉시</span>
+                            <span class="text-xs text-slate-400">판매자 운송장 발번 대기 시간 단축</span>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl text-center">
+                            <span class="text-xl font-extrabold text-blue-400 block">1hr → 10min</span>
+                            <span class="text-xs text-slate-400">물류센터 직원 외부 포털 접근 시간 감소 (일간)</span>
+                        </div>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl">
+                        <h4 class="text-xs font-bold text-slate-400 mb-2">협업</h4>
+                        <ul class="text-xs text-slate-300 space-y-1">
+                            <li><strong>영업팀</strong> — 고객 요구사항 수렴 및 전달</li>
+                            <li><strong>물류센터</strong> — 현장 프로세스 피드백</li>
+                            <li><strong>개발팀</strong> — API 연동 개발 및 테스트</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+                    <p class="text-xs text-slate-400">사업부 담당자와 협의된 이용자의 경우 추가 권한으로 'Print Smart AI Waybill' 권한 부여</p>
+                    <div class="bg-slate-900 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-slate-300 mb-1">시사점</p>
+                        <p class="text-xs text-slate-400 leading-relaxed">오남용 방지를 위한 사용자별 접근 권한 세분화 및 시스템 연동 오류 시의 예외 처리 기준 수립에 어려움이 있었으나, 이를 해결하는 과정에서 API 기반 자동화 기획 시 단순 기능 구현을 넘어 권한 제어 및 예외 상황을 고려한 백오피스 정책이 수반되어야 리스크를 방지할 수 있음을 배웠습니다.</p>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 14: PART 2 DIVIDER =====
+        {
+            id: 14, category: 'part2',
+            title: "PART 02",
+            subtitle: "SSG.COM 이마트 점포 물류 시스템 기획 및 운영 개선",
+            content: `
+            <div class="min-h-[400px] flex flex-col justify-center items-center text-center space-y-6">
+                <span class="text-6xl font-extrabold text-slate-800">02</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white">SSG.COM</h2>
+                <p class="text-xl text-slate-400">이마트 점포 물류 시스템 기획 및 운영 개선</p>
+                <div class="flex flex-wrap justify-center gap-3 mt-4">
+                    <span class="px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs font-medium">3개 프로젝트</span>
+                    <span class="px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs font-medium">약 12억 원 비용절감 기여</span>
+                    <span class="px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs font-medium">집품 생산성 8% 향상 기여</span>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 15: P4 과제 =====
+        {
+            id: 15, category: 'part2',
+            title: "POG 내비게이션 시스템",
+            subtitle: "PART 2 · PROJECT 4 — 과제 & 가설",
+            content: `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[400px] items-center">
+                <div class="space-y-6">
+                    <span class="px-2.5 py-1 bg-red-500/10 text-red-400 rounded-full text-xs font-bold uppercase tracking-wider">문제 상황</span>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">•</span>이마트 매장에서 온라인 주문 상품을 집품하는 담당자(특히 신규 입사자)가 상품 위치를 찾는 데 평균 3~5분이 소요되어 배송 지연의 주요 원인이 되었습니다.</li>
+                        <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">•</span>70여 개 점포의 매대 구조가 각기 달라 종이 POG(Plan-o-gram)로는 효율적 안내가 불가능했습니다.</li>
+                    </ul>
+                    <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl text-center">
+                        <span class="text-2xl font-extrabold text-red-400 block">40%</span>
+                        <span class="text-xs text-slate-400">집품 시간 중 상품 탐색에 사용된 비율</span>
+                    </div>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+                    <div class="bg-blue-500/10 border border-blue-500/20 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-blue-400 mb-1">가설</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">"이마트 본사에서 수신하는 POG 데이터를 SQL로 구조화하여 디지털 맵과 연동하고, 실시간으로 상품 위치를 안내한다면 집품 시간이 획기적으로 단축될 것이다."</p>
+                    </div>
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mt-4">프로젝트 범위</h4>
+                    <div class="grid grid-cols-3 gap-3 text-center">
+                        <div class="bg-slate-900 p-3 rounded-lg"><span class="text-lg font-bold text-white block">70+</span><span class="text-xs text-slate-500">대상 점포 수<br>(순차 적용)</span></div>
+                        <div class="bg-slate-900 p-3 rounded-lg"><span class="text-lg font-bold text-white block">50,000+</span><span class="text-xs text-slate-500">일일 수신<br>POG 데이터 행 수</span></div>
+                        <div class="bg-slate-900 p-3 rounded-lg"><span class="text-lg font-bold text-white block">3~5min</span><span class="text-xs text-slate-500">기존 상품 탐색<br>소요 시간</span></div>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center">개선 목표: 1분 이내 | SQL POG 데이터 구조화</p>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 16: P4 해결 =====
+        {
+            id: 16, category: 'part2',
+            title: "POG 내비게이션 시스템",
+            subtitle: "PART 2 · PROJECT 4 — 해결방안 & Design",
+            content: `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[400px] items-center">
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 pb-3">데이터 구조화</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed">이마트로부터 매일 수신되는 POG Raw 데이터(엑셀 5만 행 이상)를 SQL로 분석하여 점포별/매대별/상품별 좌표 체계를 표준화했습니다.</p>
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 pb-3 mt-4">UI 기획</h4>
+                    <ul class="text-xs text-slate-400 space-y-1">
+                        <li>· 디지털 맵 위에 상품 위치를 핀(Pin)으로 표시</li>
+                        <li>· 현재 피킹 대상: <span class="text-red-400 font-bold">빨간색 테두리</span></li>
+                        <li>· 동일 매대 내 추가 상품: <span class="text-blue-400 font-bold">파란색 테두리</span></li>
+                        <li>· 피킹 완료 시 실시간 수량 차감</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 pb-3">업무 순서도 작성 기준 및 원칙</h4>
+                    <ul class="text-xs text-slate-400 space-y-2 leading-relaxed">
+                        <li>· 복수의 독립적인 시스템들이 유기적으로 작동하며 발생하는 접점(Interface)을 명확히 식별함.</li>
+                        <li>· 각 시스템 간 데이터 트랜잭션이 발생하는 정확한 시점과 인터페이스 처리 절차를 프로세스 상에 구조화</li>
+                        <li>· 비즈니스 로직의 다양한 갈래를 조건문을 통해 명확히 분기함.</li>
+                        <li>· 발생 가능한 예외 상황을 사전에 정의하고 이에 대한 대응 프로세스를 순서도에 명시함.</li>
+                    </ul>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 17: P4 실제 적용 =====
+        {
+            id: 17, category: 'part2',
+            title: "POG 내비게이션 시스템",
+            subtitle: "PART 2 · PROJECT 4 — 순차적 실무 적용",
+            content: `
+            <div class="min-h-[400px] flex flex-col justify-center space-y-6">
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 pb-3">실행</h4>
+                    <ul class="text-xs text-slate-300 space-y-3 leading-relaxed">
+                        <li class="flex items-start gap-2"><span class="text-blue-400 mt-0.5">•</span>점포별 매대 구조와 관리자의 협조 강도 차이로 인해 단계적 배포 기준을 수립하는 데 난관이 있었으나 70여 개 점포의 안정적인 시스템 적용을 위해 1차 및 2차 배포 대상 점포를 사전 분류하여 순차적으로 적용을 진행했습니다. 이 과정을 통해 현장마다 시스템 수용 속도가 상이함을 파악하여 현장 상황에 맞춘 유연한 일정을 SCM과 조율했습니다.</li>
+                        <li class="flex items-start gap-2"><span class="text-blue-400 mt-0.5">•</span>SCM 부서와 긴밀하게 소통하며 현장 직원들이 쉽게 보고 따라 할 수 있는 운영 매뉴얼을 만들고 안내했습니다.</li>
+                        <li class="flex items-start gap-2"><span class="text-blue-400 mt-0.5">•</span>"이마트의 디지털 맵을 쓰고 싶다"는 현장의 목소리를 적극적으로 반영했습니다.</li>
+                        <li class="flex items-start gap-2"><span class="text-blue-400 mt-0.5">•</span>회사 간 민감할 수 있는 지도 사용 문제를 해결하기 위해, 법무 검토를 거쳐 이마트로부터 정식 사용 승인을 받아내며 현장의 요구를 해결했습니다.</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                    <p class="text-xs font-bold text-slate-300 mb-2">이마트 집품 앱 예시</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-slate-400">
+                        <div class="bg-slate-950 p-3 rounded-lg"><span class="text-blue-400 font-bold">1.</span> 상품하단의 뱃지 클릭 시 이마트 디지털 맵을 호출한다. 해당 상품이 위치한 매대를 안내한다.</div>
+                        <div class="bg-slate-950 p-3 rounded-lg"><span class="text-red-400 font-bold">2.</span> 포커싱된 피킹대상 상품은 빨간 테두리로 강조처리한다. 테두리 내부에는 피킹대상 상품 수량을 표시하여 피킹 완료 시 실시간 차감한다.</div>
+                        <div class="bg-slate-950 p-3 rounded-lg"><span class="text-blue-400 font-bold">3.</span> 피킹대상 카테고리의 상품이 동일 매대에 있을 경우 파란색 테두리로 강조처리한다. 피킹대상 수량을 미리 표시한다.</div>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 18: P4 성과 =====
+        {
+            id: 18, category: 'part2',
+            title: "POG 내비게이션 시스템",
+            subtitle: "PART 2 · PROJECT 4 — 성과",
+            content: `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[400px] items-center">
+                <div class="space-y-6">
+                    <span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full text-xs font-bold uppercase tracking-wider">정량적 성과</span>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex items-center justify-between">
+                            <span class="text-xs text-slate-400">인당 생산성 향상 (집품 효율 개선)</span>
+                            <span class="text-xl font-extrabold text-blue-400">+20%</span>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex items-center justify-between">
+                            <span class="text-xs text-slate-400">연간 인건비 절감 효과</span>
+                            <span class="text-xl font-extrabold text-emerald-400">7억 원</span>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex items-center justify-between">
+                            <span class="text-xs text-slate-400">신규 직원 업무 적응 기간 단축 폭</span>
+                            <span class="text-xl font-extrabold text-indigo-400">2주 → 3일</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+                    <div class="bg-slate-900 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-slate-300 mb-1">MEDIA RECOGNITION</p>
+                        <p class="text-xs text-slate-400">한국경제지에 "창고야 마트야?…온라인 배송 물류센터로 변신하는 대형마트 [현장+]" 소개되었습니다.</p>
+                        <a href="https://www.hankyung.com/article/202405136943i" class="text-xs text-blue-400 underline mt-1 inline-block" target="_blank">기사 링크</a>
+                    </div>
+                    <div class="bg-slate-900 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-slate-300 mb-1">시사점</p>
+                        <p class="text-xs text-slate-400 leading-relaxed">이 과정에서 초기 단위 테스트 부족과 현장 교육 미비로 인해 대규모 점포 배포 직후 현장 혼선이 크게 증가하는 난관을 겪었습니다. 이를 통해 대규모 배포 적용 시에는 시스템 개발뿐만 아니라 사전 테스트 체계 구축과 현장 사용자 교육 프로세스 설계까지 기획 범위에 포함해야 안정적인 서비스 정착이 가능하다는 것을 경험하였습니다.</p>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 19: P5 과제 =====
+        {
+            id: 19, category: 'part2',
+            title: "친환경 배송 프로세스",
+            subtitle: "PART 2 · PROJECT 5 — 과제 & 가설",
+            content: `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[400px] items-center">
+                <div class="space-y-6">
+                    <span class="px-2.5 py-1 bg-red-500/10 text-red-400 rounded-full text-xs font-bold uppercase tracking-wider">문제 상황</span>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">•</span>새벽배송 시 상품 파손 방지를 위해 종이봉투와 비닐봉투를 이중 포장했으나, 이는 포장재 비용 중복 지출(건당 약 200원)과 환경 낭비로 이어졌습니다.</li>
+                        <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">•</span>고객의 타포린백(장바구니) 활용 의사는 있었지만 시스템적으로 연동되지 않았습니다.</li>
+                    </ul>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl text-center">
+                            <span class="text-xl font-extrabold text-red-400 block">1,200만 원</span>
+                            <span class="text-xs text-slate-400">월평균 종이봉투 비용<br>(2023년 상반기 기준)</span>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl text-center">
+                            <span class="text-xl font-extrabold text-red-400 block">30%</span>
+                            <span class="text-xs text-slate-400">고객이 자체 장바구니<br>사용 의향 비율</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+                    <div class="bg-blue-500/10 border border-blue-500/20 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-blue-400 mb-1">가설</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">"고객이 주문 시 장바구니 비치 의사를 표시하고 배송기사가 확인할 수 있도록 프로세스를 개선한다면, 종이봉투 사용을 획기적으로 줄일 수 있을 것이다."</p>
+                    </div>
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mt-4">기존 프로세스의 비효율</h4>
+                    <div class="flex flex-wrap gap-2 text-xs text-slate-400">
+                        <span class="bg-slate-900 px-2 py-1 rounded">주문 접수</span>
+                        <span class="text-slate-600">→</span>
+                        <span class="bg-slate-900 px-2 py-1 rounded">장바구니 유무 파악 불가</span>
+                        <span class="text-slate-600">→</span>
+                        <span class="bg-red-900/30 px-2 py-1 rounded text-red-300">이중 포장 (건당 200원)</span>
+                        <span class="text-slate-600">→</span>
+                        <span class="bg-slate-900 px-2 py-1 rounded">배송</span>
+                        <span class="text-slate-600">→</span>
+                        <span class="bg-red-900/30 px-2 py-1 rounded text-red-300">포장재 낭비 / 월 1,200만원</span>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 20: P5 해결 =====
+        {
+            id: 20, category: 'part2',
+            title: "친환경 배송 프로세스",
+            subtitle: "PART 2 · PROJECT 5 — 해결방안 & Design",
+            content: `
+            <div class="min-h-[400px] flex flex-col justify-center space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 mb-3 font-bold text-xs">01</div>
+                        <h4 class="font-bold text-slate-200 text-sm mb-2">주문 단계</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">주문팀과 협업하여, 고객이 주문서 작성 시 '타포린백 비치 여부'를 선택할 수 있는 필드를 추가했습니다.</p>
+                        <p class="text-xs text-slate-500 mt-2">기본값: 미비치<br>고객의 선택 데이터를 SCM팀과 공유하여 예측에 활용</p>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <div class="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-3 font-bold text-xs">02</div>
+                        <h4 class="font-bold text-slate-200 text-sm mb-2">배송기사 앱</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">배송기사 앱에 해당 주문의 봉투 필요 유무를 사전 표시하고, 배송 완료 시 '실제 장바구니 비치 여부'를 사진과 함께 컨펌받는 프로세스를 설계했습니다.</p>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-3 font-bold text-xs">03</div>
+                        <h4 class="font-bold text-slate-200 text-sm mb-2">백오피스</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">비닐봉투 지급 내역과 종이봉투 미사용 데이터를 집계하여, SCM 운영팀이 월별 실적을 산정할 수 있도록 활용하였습니다.</p>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                    <p class="text-xs font-bold text-slate-300 mb-2">개선된 프로세스</p>
+                    <div class="flex flex-wrap gap-2 text-xs text-slate-400 items-center">
+                        <span class="bg-slate-950 px-2 py-1 rounded">주문 시 타포린백 비치 여부 선택</span>
+                        <span class="text-slate-600">→</span>
+                        <span class="bg-slate-950 px-2 py-1 rounded">배송기사 앱 봉투 필요 유무 사전 표시</span>
+                        <span class="text-slate-600">→</span>
+                        <span class="bg-slate-950 px-2 py-1 rounded">현장 확인 사진 증적</span>
+                        <span class="text-slate-600">→</span>
+                        <span class="bg-emerald-900/30 px-2 py-1 rounded text-emerald-300">포장비 절감 / ESG + 비용 절감</span>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 21: P5 성과 =====
+        {
+            id: 21, category: 'part2',
+            title: "친환경 배송 프로세스",
+            subtitle: "PART 2 · PROJECT 5 — Collaboration & 성과",
+            content: `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[400px] items-center">
+                <div class="space-y-6">
+                    <span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full text-xs font-bold uppercase tracking-wider">새벽배송 권역 전체 적용 성과</span>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl text-center">
+                            <span class="text-2xl font-extrabold text-emerald-400 block">2억 원</span>
+                            <span class="text-xs text-slate-400">연간 포장비용 절감</span>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl text-center">
+                            <span class="text-2xl font-extrabold text-emerald-400 block">15톤</span>
+                            <span class="text-xs text-slate-400">연간 비닐봉투 사용량 감소</span>
+                        </div>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-slate-300 mb-1">시사점</p>
+                        <p class="text-xs text-slate-400 leading-relaxed">기존 포장 방식 변경으로 인해 장바구니 미소지 고객의 현장 혼선이 발생하는 어려움이 있었습니다. 이를 통해 프로세스 전환 시 고객 동선의 공백을 최소화할 수 있는 사전 안내 및 보완책을 함께 설계해야 서비스 정착률을 높일 수 있음을 깨달았습니다.</p>
+                    </div>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 pb-3">이마트 라스트마일 앱 예시</h4>
+                    <ul class="text-xs text-slate-400 space-y-2">
+                        <li>· 고객배송지의 장바구니 준비여부 구분자 뱃지 확인</li>
+                        <li>· 실제 고객 배송지 장바구니 준비여부 체크</li>
+                        <li>· 백오피스 및 고객 안내 사진 증적</li>
+                    </ul>
+                    <div class="bg-slate-900 p-4 rounded-xl mt-4">
+                        <p class="text-xs font-bold text-slate-300 mb-1">개인 기여 및 역할</p>
+                        <ul class="text-xs text-slate-400 space-y-1">
+                            <li>· 라스트마일 배송기사 앱 내 '고객 장바구니 준비 여부' 표시 뱃지 및 체크 기능 기획</li>
+                            <li>· 배송 완료 시 장바구니 준비 여부 사진 증적 수집 및 백오피스 연동 프로세스 설계</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 22: P6 과제 =====
+        {
+            id: 22, category: 'part2',
+            title: "공동현관 대응 배송 및 보냉가방 부정회수 방지",
+            subtitle: "PART 2 · PROJECT 6 — 과제",
+            content: `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[400px] items-center">
+                <div class="space-y-6">
+                    <div class="bg-red-500/10 border border-red-500/20 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-red-400 mb-1">과제 1 — 배송 실패</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">고객의 출입번호 오기재 등으로 배송이 불가할 경우, 상품이 반품/폐기 처리되어 월평균 3,000만 원의 손실이 발생했습니다. 경쟁사(Coupang 등)는 대체 장소 배송을 수행하지만 SSG는 불가하였습니다.</p>
+                    </div>
+                    <div class="bg-amber-500/10 border border-amber-500/20 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-amber-400 mb-1">과제 2 — 보냉가방 부정회수</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">배송 완료 후 보냉가방(알비백) 회수 시, 일부 고객과 공모한 배송기사가 중복으로 마일리지를 획득하는 사례가 발견되었습니다. SQL 분석 결과, 특정 고객의 월 평균 회수 건수보다 5건 이상인 이상치가 발견되었습니다.</p>
+                    </div>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+                    <div class="grid grid-cols-2 gap-4 text-center">
+                        <div class="bg-slate-900 p-4 rounded-xl">
+                            <span class="text-xl font-extrabold text-red-400 block">3,000만 원/월</span>
+                            <span class="text-xs text-slate-400">배송 불가로 인한 폐기 손실</span>
+                        </div>
+                        <div class="bg-slate-900 p-4 rounded-xl">
+                            <span class="text-xl font-extrabold text-amber-400 block">5건+/월</span>
+                            <span class="text-xs text-slate-400">특정 배송기사의 의심스러운<br>보냉가방 회수 패턴 (SQL 분석)</span>
+                        </div>
+                    </div>
+                    <div class="bg-blue-500/10 border border-blue-500/20 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-blue-400 mb-1">가설</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">"배송 불가 시 대체 장소(공동현관, 경비실 등)에 배송하는 프로세스를 도입하면 보냉가방 부정회수와 폐기 손실을 방어할 수 있을 것이다."</p>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 23: P6 해결 =====
+        {
+            id: 23, category: 'part2',
+            title: "공동현관 대응 배송 및 보냉가방 부정회수 방지",
+            subtitle: "PART 2 · PROJECT 6 — 해결방안 & Design",
+            content: `
+            <div class="min-h-[400px] flex flex-col justify-center space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 mb-3 font-bold text-xs">01</div>
+                        <h4 class="font-bold text-slate-200 text-sm mb-2">대응배송 프로세스</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">주문 생성 시 고객에게 '배송 불가 시 대체 장소인 공동현관 배송안내'를 사전 고지하고 배송기사 앱에 '대응배송' 기능을 추가했습니다.</p>
+                        <p class="text-xs text-slate-400 mt-2">배송기사가 대응배송을 선택하면:</p>
+                        <ul class="text-xs text-slate-400 mt-1 space-y-1"><li>· 포장재(종이봉투) 지급 차단</li><li>· 보냉가방 회수 요청 비활성화</li></ul>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <div class="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-3 font-bold text-xs">02</div>
+                        <h4 class="font-bold text-slate-200 text-sm mb-2">고객 알림</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">대응배송 완료 시 푸시 알림 및 카카오 알림톡을 통해 상품 수령 위치와 보관 장소를 안내하는 프로세스를 기획했습니다.</p>
+                        <p class="text-xs text-slate-500 mt-2">고객 불만 사전 방지 및 재배송 요청 감소 효과</p>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-3 font-bold text-xs">03</div>
+                        <h4 class="font-bold text-slate-200 text-sm mb-2">데이터 모니터링</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">라스트마일 배송의 백오피스 시스템에 대응배송 여부를 기록하여 SCM 담당자가 실적 분석을 가능하게 하였습니다.</p>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                    <p class="text-xs font-bold text-slate-300 mb-2">시스템 로직 설계</p>
+                    <div class="flex flex-wrap gap-2 text-xs text-slate-400 items-center">
+                        <span class="bg-slate-950 px-2 py-1 rounded">주문 시점 대응 배송지 고객입력 안내</span>
+                        <span class="text-slate-600">→</span>
+                        <span class="bg-slate-950 px-2 py-1 rounded">배송 불가상황 발생 시 대응배송 처리 옵션 제공</span>
+                        <span class="text-slate-600">→</span>
+                        <span class="bg-slate-950 px-2 py-1 rounded">대응배송 시 보냉가방 회수 차단 (마일리지 부정회수 방어)</span>
+                        <span class="text-slate-600">→</span>
+                        <span class="bg-slate-950 px-2 py-1 rounded">대응배송 안내 고객 알림 발송</span>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 24: P6 성과 =====
+        {
+            id: 24, category: 'part2',
+            title: "공동현관 대응 배송 및 보냉가방 부정회수 방지",
+            subtitle: "PART 2 · PROJECT 6 — Collaboration & Execution",
+            content: `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[400px] items-center">
+                <div class="space-y-6">
+                    <span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full text-xs font-bold uppercase tracking-wider">성과</span>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li class="flex items-start gap-2"><span class="text-emerald-400">✔</span>보냉가방 부정 회수 방지</li>
+                        <li class="flex items-start gap-2"><span class="text-emerald-400">✔</span>공동현관 대응배송 통한 배송불가 케이스 감소</li>
+                        <li class="flex items-start gap-2"><span class="text-emerald-400">✔</span>배송불가로 인한 상품 폐기금액 감소 (연 1.5억 추산)</li>
+                        <li class="flex items-start gap-2"><span class="text-emerald-400">✔</span>출입번호 오기재 등의 고객 착오에도 유연하게 배송가능하도록 대응</li>
+                    </ul>
+                    <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-slate-300 mb-1">시사점</p>
+                        <p class="text-xs text-slate-400 leading-relaxed">SQL 분석으로 데이터 이상치를 조기 감지하여 이슈 발생을 예방하고, 프로세스 개편과 신규 서비스를 병행 도입해 비용 손실을 방어했던 경험이었습니다.</p>
+                    </div>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 pb-3">이마트 라스트마일 앱 및 고객안내 예시</h4>
+                    <ul class="text-xs text-slate-400 space-y-2">
+                        <li>· 배송기사 앱에 대체 배송지(공동현관)에 배송하는 옵션 추가</li>
+                        <li>· 대체 배송지 배송 시 종이봉투 제공</li>
+                        <li>· 보냉가방 회수 및 마일리지 지급 비활성화</li>
+                        <li>· 푸시알림으로 대체 배송지 배송완료 안내</li>
+                    </ul>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 25: PART 3 DIVIDER =====
+        {
+            id: 25, category: 'part3',
+            title: "PART 03",
+            subtitle: "SSG.COM 자동화 물류센터 구축 및 고도화",
+            content: `
+            <div class="min-h-[400px] flex flex-col justify-center items-center text-center space-y-6">
+                <span class="text-6xl font-extrabold text-slate-800">03</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white">SSG.COM</h2>
+                <p class="text-xl text-slate-400">자동화 물류센터 구축 및 고도화</p>
+                <div class="flex flex-wrap justify-center gap-3 mt-4">
+                    <span class="px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs font-medium">WMS-WCS 연동 설계</span>
+                    <span class="px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs font-medium">냉장/냉동 합포장 로직</span>
+                    <span class="px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs font-medium">3D 기반 박스추천</span>
+                </div>
+                <p class="text-sm text-slate-500 mt-2">백화점 자동화센터(N4) 신규 구축부터 김포/오포 설비 맞춤형 프로세스 표준화</p>
+            </div>`
+        },
+        // ===== SLIDE 26: P7 과제 =====
+        {
+            id: 26, category: 'part3',
+            title: "백화점 주문의 물류센터 내 단계별 상태 전이 표준화",
+            subtitle: "PART 3 · PROJECT 7 — 과제 & 가설",
+            content: `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[400px] items-center">
+                <div class="space-y-6">
+                    <span class="px-2.5 py-1 bg-red-500/10 text-red-400 rounded-full text-xs font-bold uppercase tracking-wider">문제 상황</span>
+                    <p class="text-sm text-slate-300 leading-relaxed">백화점 주문은 피킹지시→피킹완료→패킹완료→출고완료→배송완료로 이어지는 과정에서 부분취소, 분할 배송, 출하 후 취소 등 다양한 예외 상황이 발생합니다.</p>
+                    <p class="text-sm text-slate-300 leading-relaxed">작업자 개입이 제한적인 자동화 물류센터 특성상 예외 발생 시 시스템 로직을 통한 제어를 실현했습니다.</p>
+                    <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-red-400 mb-2">상태 부정합 발생시 문제상황</p>
+                        <div class="flex flex-wrap gap-2 text-xs text-slate-400 items-center">
+                            <span class="bg-red-900/30 px-2 py-1 rounded text-red-300">SSG 취소</span>
+                            <span class="text-slate-600">↔</span>
+                            <span class="bg-red-900/30 px-2 py-1 rounded text-red-300">WMS 피킹완료</span>
+                            <span class="text-slate-600">→</span>
+                            <span class="bg-slate-950 px-2 py-1 rounded">물류현장 처리 불가</span>
+                        </div>
+                        <ul class="text-xs text-slate-400 mt-3 space-y-1">
+                            <li>· 기존 수기 집품과는 달리 자동화 센터에서는 작업자 개입불가</li>
+                            <li>· 취소된 상품이지만 고객은 상품수령 → 후속 CS 처리</li>
+                            <li>· 고객 재결제 유도 혹은 착불반납 유도</li>
+                            <li>· CS 건당 4천원 비용발생</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+                    <div class="bg-blue-500/10 border border-blue-500/20 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-blue-400 mb-1">가설</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">"상태별 취소/변경 처리 로직을 정의하고 연관 시스템(SSG, WMS, 배송사)과의 상태 동기화를 보장한다면 상태 오류로 인한 CS 문의와 오출고 사고가 감소할 것이다."</p>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 27: P7 해결 =====
+        {
+            id: 27, category: 'part3',
+            title: "백화점 주문의 물류센터 내 단계별 상태 전이 표준화",
+            subtitle: "PART 3 · PROJECT 7 — 해결방안",
+            content: `
+            <div class="min-h-[400px] flex flex-col justify-center space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 mb-3 font-bold text-xs">01</div>
+                        <h4 class="font-bold text-slate-200 text-sm mb-2">프로세스 정립</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed"><strong class="text-slate-300">출고주체 동시 운영 상황에서 매핑 조건 표준화:</strong> 구로(수동)와 오포(자동) 출고주체에 따른 택배사 연동 매핑</p>
+                        <p class="text-xs text-slate-400 mt-2">오포는 대한통운 매핑하여 자동 피킹/패킹 대상 주문만 처리, 반면 구로 주문은 한진택배 매핑하여 오포에 할당되지 않도록 처리</p>
+                        <p class="text-xs text-slate-400 mt-2"><strong class="text-slate-300">텔레그램 체커 구축:</strong> 출하된 주문이 취소연동될 경우 관리자 알림(Alert)</p>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <div class="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-3 font-bold text-xs">02</div>
+                        <h4 class="font-bold text-slate-200 text-sm mb-2">작업자 동선설계</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed"><strong class="text-slate-300">동선 연속성 유지:</strong> 작업자는 취소 여부와 무관하게 기존 프로세스 그대로 오토라벨러 및 봉함기 통과 (작업자 추가 스캔/확인 업무 없음)</p>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-3 font-bold text-xs">03</div>
+                        <h4 class="font-bold text-slate-200 text-sm mb-2">관리자(Admin) 기능 / 예외 처리</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed"><strong class="text-slate-300">강제 상태 변경 메뉴 (예외 대응 목적):</strong> 설비 장애 시 관리자가 주문번호 조회 → '피킹→패킹완료' 또는 '출하완료' 강제 변경 가능</p>
+                        <p class="text-xs text-slate-400 mt-2"><strong class="text-slate-300">설비 처리 이력 조회:</strong> 주문별 오토라벨러/봉함기/BCR 통과 여부 기록</p>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 28: P7 성과 =====
+        {
+            id: 28, category: 'part3',
+            title: "백화점 주문의 물류센터 내 단계별 상태 전이 표준화",
+            subtitle: "PART 3 · PROJECT 7 — 성과",
+            content: `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[400px] items-center">
+                <div class="space-y-6">
+                    <span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full text-xs font-bold uppercase tracking-wider">성과</span>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                            <span class="text-xs text-slate-400 block">작업자 인당 처리 건수</span>
+                            <span class="text-xl font-extrabold text-emerald-400 block mt-1">4.3배 증가</span>
+                            <span class="text-xs text-slate-500">인당 처리 물량이 급증했음에도 현장 작업 소요시간(패킹완료~출하 완료 전체 리드타임) 46.9% 단축</span>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                            <span class="text-xs text-slate-400 block">시스템 및 현장 장애 대응 건수</span>
+                            <span class="text-xl font-extrabold text-blue-400 block mt-1">월 평균 약 7건 → 1건 (약 65% 감소)</span>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                            <span class="text-xs text-slate-400 block">배송주체별 DAS 셀 할당 로직 및 취소회수 연동 IF(인터페이스) 기획을 통한 불필요 작업 절감</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 pb-3">백화점 자동화 물류설비</h4>
+                    <ul class="text-xs text-slate-400 space-y-2">
+                        <li>· 자동화 포장 설비 라인</li>
+                        <li>· 박스 이송 라인</li>
+                        <li>· 고객 배송지별 상품 분류 설비 (DAS)</li>
+                    </ul>
+                    <div class="bg-slate-900 p-4 rounded-xl mt-4">
+                        <p class="text-xs font-bold text-slate-300 mb-1">시사점</p>
+                        <p class="text-xs text-slate-400 leading-relaxed">연관 시스템 간 인터페이스 처리 속도 차이로 인해 예외 상태를 실시간 동기화하는 데 어려움이 있었으나, 이를 해결하는 과정에서 신규 센터 구축 시 설비 연동뿐만 아니라 상태 전이 및 연동 실패 시 예외 처리 기준을 사전에 정밀하게 설계해야 현장 오출고와 운영 혼선을 막을 수 있습니다.</p>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 29: P8 과제 =====
+        {
+            id: 29, category: 'part3',
+            title: "김포센터 냉장/냉동 합포장 및 오포센터 냉동 택배 분기",
+            subtitle: "PART 3 · PROJECT 8 — 과제",
+            content: `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[400px] items-center">
+                <div class="space-y-6">
+                    <span class="px-2.5 py-1 bg-red-500/10 text-red-400 rounded-full text-xs font-bold uppercase tracking-wider">문제 상황</span>
+                    <p class="text-sm text-slate-300 leading-relaxed">김포센터는 다이후쿠 자동화 설비에서 냉장 상품과 냉동 상품의 보관·이동 라인이 물리적으로 분리되어 있어, 한 주문에 냉장과 냉동 상품이 함께 포함된 경우 자동 합포장이 불가하여 작업자가 수동으로 별도 포장해야 합니다.</p>
+                    <p class="text-sm text-slate-300 leading-relaxed">오포센터 냉동 상품을 전국택배 출고 하는 신규 과제에서 스티로폼 박스(아이스박스) 포장이 필수이나, 기존 토트 흐름이 일반 택배 라인으로 분기되어 스티로폼 포장 라인으로 자동 분기하도록 설계가 필요했습니다.</p>
+                    <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-slate-300 mb-2">VOC (정성적 문제제기)</p>
+                        <p class="text-xs text-slate-400 mb-1"><strong>고객 피드백:</strong> "노브랜드 냉동 새우와 요거트를 주문했는데 조그만 박스 2개에 나뉘어 배송하는 이유는 무엇인가요?"</p>
+                        <p class="text-xs text-slate-400"><strong>현장 작업자 피드백:</strong> "냉장/냉동 섞인 주문은 설비가 각기 다른 토트를 출발시켜서, 매번 포장대에서 박스 두 개로 나눠 포장해야 해요."</p>
+                    </div>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+                    <div class="bg-blue-500/10 border border-blue-500/20 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-blue-400 mb-1">가설</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">"만약 냉장/냉동 혼재 주문은 냉동 보관존에서 피킹 완료 후 냉장 라인으로 토트를 자동 이관하고, 냉동 전국택배 주문은 스티로폼 라인으로 자동 분기되도록 WCS 제어 로직을 추가한다면, 작업자 수동 개입이 제거되고 포장 효율성과 온도 품질이 동시에 향상될 것이다."</p>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 30: P8 해결 =====
+        {
+            id: 30, category: 'part3',
+            title: "김포센터 냉장/냉동 합포장 및 오포센터 냉동 택배 분기",
+            subtitle: "PART 3 · PROJECT 8 — 해결방안",
+            content: `
+            <div class="min-h-[400px] flex flex-col justify-center space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 mb-3 font-bold text-xs">01</div>
+                        <h4 class="font-bold text-slate-200 text-sm mb-2">프로세스 정립</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed"><strong class="text-slate-300">냉장/냉동 합포장 조건 정의:</strong> 동일 주문 내 냉장과 냉동 혼재 시 → 냉동 보관존에서 피킹 완료 후 냉장 라인으로 토트 자동 이동하는 로직으로 수정하였습니다. (WCS 연동)</p>
+                        <p class="text-xs text-slate-400 mt-2"><strong class="text-slate-300">냉동 전국택배 분기 조건:</strong> 출고 대상이 '냉동' + '전국택배'일 경우 → 직배송 출하라인이 아닌 택배 출하 라인에 분기하도록 로직을 정의하였습니다.</p>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <div class="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-3 font-bold text-xs">02</div>
+                        <h4 class="font-bold text-slate-200 text-sm mb-2">작업자 동선설계</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">작업자는 냉장/냉동 구분 없이 동일한 피킹 작업 수행 (설비가 토트를 자동 분기)</p>
+                        <p class="text-xs text-slate-400 mt-2">냉동 전국택배 토트는 택배 포장 및 출하 라인으로 자동 분기 → 작업자는 스티로폼 박스에 상품 투입 후 테이핑기 처리하도록 업무 가이드 정립.</p>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 31: P8 성과 =====
+        {
+            id: 31, category: 'part3',
+            title: "김포센터 냉장/냉동 합포장 및 오포센터 냉동 택배 분기",
+            subtitle: "PART 3 · PROJECT 8 — 성과",
+            content: `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[400px] items-center">
+                <div class="space-y-6">
+                    <span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full text-xs font-bold uppercase tracking-wider">성과</span>
+                    <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-slate-300 mb-1">김포센터</p>
+                        <p class="text-xs text-slate-400">포장 프로세스 단축을 통해 건당 수동 포장 소요시간 60% 단축 (5분 → 2분) 및 일일 작업 낭비 시간 2시간 이상 절감</p>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-slate-300 mb-1">오포센터</p>
+                        <p class="text-xs text-slate-400">냉동 전국택배 스티로폼 라인 자동 분기 성공률 98% 확보 및 수동 분기 작업 발생 건수 0건 달성.</p>
+                        <p class="text-xs text-slate-400 mt-1">비수도권 권역 대상 D+1 신선 배송 체계 구축으로 신규 주문 수요(일 목표 1,000건) 수용 기반 마련</p>
+                    </div>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+                    <div class="bg-slate-900 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-slate-300 mb-1">시사점</p>
+                        <p class="text-xs text-slate-400 leading-relaxed">센터별 자동화 설비(다이후쿠/LG)의 물리적 동작 방식과 설비제어시스템(WCS)의 차이로 인해 WMS 상에서 동일한 목표를 구현할 연동 로직을 다르게 설계해야 하는 난관이 있었습니다. (김포: 토트 순서 제어, 오포: 스티로폼 라인 분기 조건 정의)</p>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">이 과정을 통해 자동화 프로젝트 기획 시 단일 로직을 고집하기보다, 설비 특성에 맞춰 창고관리시스템(WMS)과 설비제어시스템(WCS) 간의 데이터 연동 인터페이스 조건을 정밀하게 수립하는 것이 현장 정착률을 결정짓는 핵심입니다.</p>
+                    </div>
+                    <div class="text-xs text-slate-500 space-y-1">
+                        <p>· 냉장&냉동 상품이 합포장된 토트</p>
+                        <p>· 스티로폼 포장대로 분기하는 신규라인</p>
+                        <p>· 스티로폼 박스 포장대</p>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 32: P9 과제 =====
+        {
+            id: 32, category: 'part3',
+            title: "김포센터 상품 합포장 박스추천 로직 구축",
+            subtitle: "PART 3 · PROJECT 9 — 과제",
+            content: `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[400px] items-center">
+                <div class="space-y-4">
+                    <span class="px-2.5 py-1 bg-red-500/10 text-red-400 rounded-full text-xs font-bold uppercase tracking-wider">문제 상황</span>
+                    <div class="space-y-3">
+                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                            <p class="text-xs font-bold text-red-400 mb-1">① 중량만 보는 기존 로직의 한계</p>
+                            <p class="text-xs text-slate-400">기존 박스추천은 중량(kg)만 기준으로 산정 → 부피가 큰 이형물(예: 5kg but 50×40×30cm)이 합포장될 경우 박스에 물리적으로 들어가지 않아 추가 박스 투입 및 포장시간 발생합니다.</p>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                            <p class="text-xs font-bold text-red-400 mb-1">② 상품 회전(방향 전환) 미고려로 인한 공간 낭비</p>
+                            <p class="text-xs text-slate-400">상품의 가로/세로/높이 회전(90° 회전)을 고려하지 않아, 동일 부피 대비 박스 공간 활용률이 저조하였습니다. 예: 30×20×10cm 상품을 20×30×10cm로 회전시키면 박스 내 빈 공간이 20% 이상 줄어들지만, 기존 로직은 회전을 고려하지 않은 토트매핑으로 계산됨</p>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                            <p class="text-xs font-bold text-red-400 mb-1">③ 완충재(아이스팩·에어캡) 공간 미반영으로 인한 파손</p>
+                            <p class="text-xs text-slate-400">냉장/냉동 상품은 아이스팩 투입이 필수이나 기존 로직은 완충재 부피를 반영하지 않았고 완충재 공간 부족으로 상품 간 충돌 혹은 온도 유지 실패로 인한 상품 변질이 발생하였습니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+                    <div class="bg-blue-500/10 border border-blue-500/20 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-blue-400 mb-1">가설</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">"만약 WMS에 상품별 3차원 체적(가로/세로/높이)을 등록하고, 합포장 시 90° 회전을 허용하며, 온도구분(냉장/냉동/상온) 및 완충재(아이스팩·에어캡) 투입 조건에 따라 필요 공간을 자동 산출하는 로직을 신규 개발한다면 재포장 및 파손 클레임이 모두 감소할 것이다."</p>
+                    </div>
+                    <div class="bg-slate-900 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-slate-300 mb-1">가설 수립 근거 (실제 관찰 및 데이터 기반)</p>
+                        <p class="text-xs text-slate-400">작업자가 수동으로 선택한 박스 중 30%는 추천 박스보다 1~2단계 큰 박스였으며, 이는 곧 포장재 비용 증가로 이어짐을 확인함.</p>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 33: P9 해결 =====
+        {
+            id: 33, category: 'part3',
+            title: "김포센터 상품 합포장 박스추천 로직 구축",
+            subtitle: "PART 3 · PROJECT 9 — 해결방안",
+            content: `
+            <div class="min-h-[400px] flex flex-col justify-center space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 mb-3 font-bold text-xs">01</div>
+                        <h4 class="font-bold text-slate-200 text-sm mb-2">프로세스 정립</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">집품 지시이전 주문번호 단위로 상품을 담을 토트 수를 계산하는 최초 시점에서 주문의 상품 구성(중량+부피+회전+완충재)을 종합 계산하였습니다.</p>
+                        <p class="text-xs text-slate-400 mt-2">작업자가 실제 패킹하는 시점에 이 결과를 노출하여 최적 박스 호수(규격)를 자동 추천하는 UI 제공하였습니다.</p>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <div class="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-3 font-bold text-xs">02</div>
+                        <h4 class="font-bold text-slate-200 text-sm mb-2">관리자 기능</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">박스추천 로직의 적중률(추천 대비 실제 사용 박스 일치율)을 일간/주간 집계하는 대시보드 제공하였습니다.</p>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 34: P9 성과 =====
+        {
+            id: 34, category: 'part3',
+            title: "김포센터 상품 합포장 박스추천 로직 구축",
+            subtitle: "PART 3 · PROJECT 9 — 성과",
+            content: `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[400px] items-center">
+                <div class="space-y-6">
+                    <span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full text-xs font-bold uppercase tracking-wider">성과</span>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                            <span class="text-xs text-slate-400 block">배송건당 박스수</span>
+                            <span class="text-xl font-extrabold text-emerald-400 block mt-1">1.4~1.5개 → 1.024개</span>
+                            <span class="text-xs text-slate-500">오더당 약 0.4박스 절감</span>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                            <span class="text-xs text-slate-400 block">박스추천 일치율</span>
+                            <span class="text-xl font-extrabold text-blue-400 block mt-1">평균 85~89% 유지</span>
+                            <span class="text-xs text-slate-500">불필요한 과대포장 및 수동 재포장 소요 방지</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-500">상품 체적을 바탕으로 포장해야할 박스가 추천되는 포장대 화면 UI</p>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+                    <div class="bg-slate-900 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-slate-300 mb-1">시사점</p>
+                        <p class="text-xs text-slate-400 leading-relaxed">가로·세로·높이 기본값 오입력 상품들의 기준 정보를 재정의하고, 상품군별로 상이한 완충재(아이스팩·에어캡) 부피 산출 기준을 세분화하는 데 어려움이 있었습니다.</p>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">이를 해결하는 과정에서 고도화된 로직 구현보다 정확한 상품 마스터 데이터 수집이 선행되어야 하며, 일괄 적용 정책보다는 상품 특성에 맞춘 기준정보 세분화가 박스 추천 적중률을 높이는 요소입니다.</p>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 35: PART 4 DIVIDER =====
+        {
+            id: 35, category: 'part4',
+            title: "PART 04",
+            subtitle: "시스템 연동 및 AI 활용 역량",
+            content: `
+            <div class="min-h-[400px] flex flex-col justify-center items-center text-center space-y-6">
+                <span class="text-6xl font-extrabold text-slate-800">04</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white">시스템 연동 및 AI 활용 역량</h2>
+                <p class="text-lg text-slate-400">API · 데이터 분석 · AI 활용</p>
+                <div class="flex flex-wrap justify-center gap-3 mt-4">
+                    <span class="px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs font-medium">10여 개 글로벌 배송사 API 연동 기획</span>
+                    <span class="px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs font-medium">SQL 기반 데이터 분석 및 운영 개선</span>
+                    <span class="px-3 py-1.5 bg-slate-800 text-slate-300 rounded-lg text-xs font-medium">AI 및 Python 활용 업무 효율화</span>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 36: API 연동 =====
+        {
+            id: 36, category: 'part4',
+            title: "API 및 시스템 통합 기획 경험",
+            subtitle: "PART 4 — 시스템 연동 및 AI 활용 역량",
+            content: `
+            <div class="min-h-[400px] flex flex-col justify-center space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <h4 class="font-bold text-slate-200 text-sm mb-2 text-blue-400">외부 배송사 연동</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">DHL EC, YTO, Pos Laju, SAGAWA, 롯데API 등 10여 개 글로벌 배송사 API 스펙 분석 및 연동 기획</p>
+                        <p class="text-xs text-slate-400 mt-1">운송장 발번, 추적 데이터, 라벨 출력 등 핵심 기능의 자동화 인터페이스 설계</p>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <h4 class="font-bold text-slate-200 text-sm mb-2 text-indigo-400">플랫폼 확장</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">Shopify, WISH 등 외부 이커머스 플랫폼과의 연동 API 기획</p>
+                        <p class="text-xs text-slate-400 mt-1">오픈 API 문서 작성 경험 — 외부 개발자가 쉽게 연동할 수 있도록 표준화된 문서와 샘플 코드 제공</p>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <h4 class="font-bold text-slate-200 text-sm mb-2 text-emerald-400">내부 시스템 연동</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">WMS, PDO, mDPO, ECMS, SIS 간 인터페이스 설계 및 데이터 정합성 검증</p>
+                        <p class="text-xs text-slate-400 mt-1">복수 시스템 간 데이터 흐름을 파악하고 불일치 사항을 사전에 방지하는 검증 프로세스 수립</p>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                    <p class="text-xs font-bold text-slate-300 mb-2">보유 기술 및 활용 도구</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-slate-950 border border-slate-700 text-slate-300 rounded text-xs">Postman (API 테스트)</span>
+                        <span class="px-2 py-1 bg-slate-950 border border-slate-700 text-slate-300 rounded text-xs">Swagger (매개변수 입력 호출)</span>
+                        <span class="px-2 py-1 bg-slate-950 border border-slate-700 text-slate-300 rounded text-xs">JIRA (프로젝트 관리)</span>
+                        <span class="px-2 py-1 bg-slate-950 border border-slate-700 text-slate-300 rounded text-xs">Confluence (문서 협업)</span>
+                        <span class="px-2 py-1 bg-slate-950 border border-slate-700 text-slate-300 rounded text-xs">Python (웹크롤링, API 호출)</span>
+                        <span class="px-2 py-1 bg-slate-950 border border-slate-700 text-slate-300 rounded text-xs">SQL (데이터 분석)</span>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 37: 데이터 분석 =====
+        {
+            id: 37, category: 'part4',
+            title: "데이터 분석 및 운영 대응 역량",
+            subtitle: "PART 4 — 시스템 연동 및 AI 활용 역량",
+            content: `
+            <div class="min-h-[400px] flex flex-col justify-center space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <h4 class="font-bold text-slate-200 text-sm mb-2 text-blue-400">SQL 활용</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">SQL을 사용하여 Admin에서 추출 불가능한 복합 데이터를 추출하고, 대량 사고(데이터 불일치, 상태값 잔류 등)에 대한 원인 분석 및 보정 요청</p>
+                        <p class="text-xs text-slate-400 mt-1">다중 테이블 조인, 서브쿼리, SQL 함수 활용</p>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <h4 class="font-bold text-slate-200 text-sm mb-2 text-red-400">부정 사용 탐지</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">보냉가방 부정회수, 마일리지 중복 획득 사례를 SQL로 적발하여 운영 프로세스 개선에 기여</p>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <h4 class="font-bold text-slate-200 text-sm mb-2 text-emerald-400">KPI 대시보드</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">배송 통계, 물류센터 성과 지표(Performance Index)를 관리자 페이지에 구현하기 위한 요구사항 정의</p>
+                        <p class="text-xs text-slate-400 mt-1">운영팀이 데이터 기반으로 의사결정을 내릴 수 있도록 지표 체계 설계</p>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                    <p class="text-xs font-bold text-slate-300 mb-2">데이터 분석 및 개선 프로세스</p>
+                    <div class="flex flex-wrap gap-2 text-xs text-slate-400 items-center">
+                        <span class="bg-slate-950 px-2 py-1 rounded">데이터 추출: SQL 기반 복합 조건 데이터 추출</span>
+                        <span class="text-slate-600">→</span>
+                        <span class="bg-slate-950 px-2 py-1 rounded">패턴 분석: 이상치 및 불일치 데이터 파악</span>
+                        <span class="text-slate-600">→</span>
+                        <span class="bg-slate-950 px-2 py-1 rounded">원인 분석: 발생 근본 원인 도출</span>
+                        <span class="text-slate-600">→</span>
+                        <span class="bg-slate-950 px-2 py-1 rounded">보정 처리: 개발·운영팀 연계 데이터 정정</span>
+                        <span class="text-slate-600">→</span>
+                        <span class="bg-slate-950 px-2 py-1 rounded">모니터링: 개선 후 데이터 정합성 지속 검증</span>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 38: 다국어 =====
+        {
+            id: 38, category: 'part4',
+            title: "다국어·현지화 및 커뮤니케이션",
+            subtitle: "PART 4 — 시스템 연동 및 AI 활용 역량",
+            content: `
+            <div class="min-h-[400px] flex flex-col justify-center space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <h4 class="font-bold text-slate-200 text-sm mb-2 text-blue-400">글로벌 협업</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">싱가포르, 일본, 중국, 미국 이해관계자와 미팅을 진행하며 요구사항 수렴 및 일정 조율</p>
+                        <p class="text-xs text-slate-400 mt-1">사실위주 전달을 통한 효과적인 커뮤니케이션 전략 수립</p>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <h4 class="font-bold text-slate-200 text-sm mb-2 text-indigo-400">다국어 UX</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">Qxpress 프론트 트래킹 페이지의 상태값을 5개 언어로 번역 및 검수 요청</p>
+                        <p class="text-xs text-slate-400 mt-1">국가별 배송 특성을 반영한 용어 정의 — 동일한 상태값이라도 국가별로 다른 표현 사용</p>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                        <h4 class="font-bold text-slate-200 text-sm mb-2 text-emerald-400">해외 제휴</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">패밀리마트(대만), DHL(독일), YTO(중국) 등과 기술 협의 및 계약 조건 검토</p>
+                        <p class="text-xs text-slate-400 mt-1">제휴사의 기술 제약사항을 파악하고 현실적인 연동 방안을 제시하는 역할 수행</p>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 39: CJ 터미널 =====
+        {
+            id: 39, category: 'part4',
+            title: "운영 데이터 정합성 대응 — CJ 택배 터미널 코드 오매핑 수정",
+            subtitle: "PART 4 — 시스템 연동 및 AI 활용 역량",
+            content: `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[400px] items-center">
+                <div class="space-y-6">
+                    <div class="bg-red-500/10 border border-red-500/20 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-red-400 mb-1">문제 상황</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">현장 설정 착오로 CJ 택배 터미널 코드가 오매핑되어 출고 박스 500여 건이 잘못된 터미널로 분류될 위험 발생함.</p>
+                    </div>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+                    <div class="bg-slate-900 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-blue-400 mb-1">대응 방안</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">Python(requests) 기반으로 CJ API를 반복 호출하는 스크립트를 작성하여 500여 건의 운송장별 터미널 코드를 자동 조회하고 오매핑 200여 건을 즉시 추출</p>
+                    </div>
+                    <div class="bg-emerald-900/20 border border-emerald-900/30 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-emerald-400 mb-1">성과</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">수작업 시 4시간 이상 소요되는 데이터 검증을 30분 만에 완료하여 오분류 박스 재분류 처리 및 배송 지연 차단</p>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 40: QA 자동화 =====
+        {
+            id: 40, category: 'part4',
+            title: "자동화 설비 QA 테스트 — Swagger UI 대신 Python으로 자동화",
+            subtitle: "PART 4 — 시스템 연동 및 AI 활용 역량",
+            content: `
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[400px] items-center">
+                <div class="space-y-6">
+                    <div class="bg-red-500/10 border border-red-500/20 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-red-400 mb-1">문제 상황</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">신규 자동화 설비 구축 시 WMS-WCS 간 수백 건의 인터페이스 테스트가 필요했으나, API 문서 단일 호출 방식으로는 테스트에 과도한 시간 소요되는 번거로움이 발생함.</p>
+                    </div>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+                    <div class="bg-slate-900 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-blue-400 mb-1">대응 방안</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">AI 활용 Python 스크립트를 작성하여 WCS IF 호출 시 필수 파라미터만 입력하게 하는 UI 스크립트 작성 및 테스트 활용하였음.</p>
+                    </div>
+                    <div class="bg-emerald-900/20 border border-emerald-900/30 p-4 rounded-xl">
+                        <p class="text-xs font-bold text-emerald-400 mb-1">개선 성과</p>
+                        <p class="text-xs text-slate-300 leading-relaxed">QA 테스트 소요 시간을 3일에서 4시간으로 단축하고 설비 연동 오류를 사전에 도출하여 오픈 일정 준수함.</p>
+                    </div>
+                </div>
+            </div>`
+        },
+        // ===== SLIDE 41: THANK YOU =====
+        {
+            id: 41, category: 'part4',
+            title: "THANK YOU",
+            subtitle: "이현재 | Product Manager",
+            content: `
+            <div class="min-h-[400px] flex flex-col justify-center space-y-8">
+                <div class="text-center space-y-4">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white">이현재</h2>
+                    <p class="text-lg text-slate-400">Product Manager</p>
+                </div>
+                <div class="border-l-4 border-blue-500 pl-6 py-2 max-w-3xl mx-auto">
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        기획자의 역할은 복잡한 시스템 기획을 거창하게 제시하는 것이 아닌 현업의 정체와 백오피스의 예외 상황을 시스템 로직으로 해결하는 데 있다고 믿습니다.
+                    </p>
+                </div>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        지난 7년여간 글로벌 물류 및 국내 커머스 환경에서 서비스 기획과 운영을 수행하며 얻은 가장 큰 배움은 다음과 같습니다.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl">
+                            <p class="text-xs font-bold text-blue-400 mb-1">데이터 직접 검증</p>
+                            <p class="text-xs text-slate-400 leading-relaxed">타 부서의 개발 우선순위만 기다리기보다, SQL로 현장 데이터를 직접 조회하고 필요시 Python 스크립트를 활용해 이상 데이터를 신속하게 정제함으로써 문제 해결의 리드타임을 줄였습니다.</p>
+                        </div>
+                        <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl">
+                            <p class="text-xs font-bold text-indigo-400 mb-1">시스템 구조화</p>
+                            <p class="text-xs text-slate-400 leading-relaxed">서로 다른 설비와 제어 방식이 얽힌 백오피스 환경에서 개발팀 및 현업 담당자와의 지속적인 커뮤니케이션을 통해 예외 처리 기준과 데이터 인터페이스 조건을 정립했습니다.</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed text-center mt-4">
+                        앞으로도 화려한 성과 포장이 아닌, 내부 사용자의 불편함을 정확히 정의하고 백엔드 데이터와 업무 순서를 정합성 있게 메워가는 기획자로 임하겠습니다.
+                    </p>
+                </div>
+            </div>`
+        }
+    ];
+
+    let currentSlideIndex = 0;
+
+    function updateCategoryTabs() {
+        const currentSlide = slides[currentSlideIndex];
+        const categories = ['intro', 'part1', 'part2', 'part3', 'part4'];
+        categories.forEach(cat => {
+            const btn = document.getElementById(`btn-cat-${cat}`);
+            if (btn) {
+                if (currentSlide.category === cat) {
+                    btn.classList.add('bg-slate-800', 'text-blue-400');
+                    btn.classList.remove('text-slate-400', 'hover:text-white');
+                } else {
+                    btn.classList.remove('bg-slate-800', 'text-blue-400');
+                    btn.classList.add('text-slate-400', 'hover:text-white');
+                }
+            }
+        });
+    }
+
+    function renderSlide() {
+        const container = document.getElementById('slide-container');
+        const slide = slides[currentSlideIndex];
+        container.classList.add('opacity-0', 'scale-[0.98]');
+        setTimeout(() => {
+            container.innerHTML = `
+                <div class="space-y-2 mb-6 border-b border-slate-800/80 pb-4">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <span class="text-xs uppercase tracking-wider font-extrabold px-2 py-0.5 bg-blue-500/10 text-blue-400 rounded">${slide.category.toUpperCase()}</span>
+                        <span class="text-slate-600">|</span>
+                        <h5 class="text-xs font-medium text-slate-400 uppercase tracking-wide">${slide.subtitle}</h5>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-bold text-white tracking-tight">${slide.title}</h2>
+                </div>
+                ${slide.content}
+            `;
+            container.classList.remove('opacity-0', 'scale-[0.98]');
+            container.scrollTop = 0;
+            document.getElementById('slide-counter').innerText = `${currentSlideIndex + 1} / ${slides.length}`;
+            document.getElementById('progress-bar').style.width = `${((currentSlideIndex + 1) / slides.length) * 100}%`;
+            document.getElementById('btn-prev').disabled = currentSlideIndex === 0;
+            const nextBtn = document.getElementById('btn-next');
+            if (currentSlideIndex === slides.length - 1) {
+                nextBtn.innerHTML = `<span>처음으로</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H18"></path></svg>`;
+            } else {
+                nextBtn.innerHTML = `<span>다음</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>`;
+            }
+            updateCategoryTabs();
+        }, 200);
+    }
+
+    function nextSlide() {
+        if (currentSlideIndex < slides.length - 1) { currentSlideIndex++; }
+        else { currentSlideIndex = 0; }
+        renderSlide();
+    }
+
+    function prevSlide() {
+        if (currentSlideIndex > 0) { currentSlideIndex--; renderSlide(); }
+    }
+
+    function goToCategory(catName) {
+        const foundIndex = slides.findIndex(s => s.category === catName);
+        if (foundIndex !== -1) { currentSlideIndex = foundIndex; renderSlide(); }
+    }
+
+    window.onload = function() { renderSlide(); };
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'ArrowRight') { nextSlide(); }
+        else if (event.key === 'ArrowLeft') { prevSlide(); }
+    });
+    </script>
+</body>
+</html>
